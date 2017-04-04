@@ -1,0 +1,87 @@
+#content { 
+    display: none;
+}
+#loader { 
+    width: 200px;        
+    position: absolute;        
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 250px;
+}
+#loader1 { 
+    z-index: 1;
+    margin: 0 auto;
+    display: block;
+    width: 100%;  
+
+
+}
+
+#loader2 { 
+    z-index: 2;
+
+    left: 0;
+    right: 0;
+
+    margin: auto;
+    display: block;
+    width: 100%;
+    position: absolute;
+}
+#loader3 { 
+    width: 100%;
+}
+@media only screen and (max-width: 800px) {
+    #loader {
+        width: 35%;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #loader {
+        width: 65%;
+    }
+}
+
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 10s  infinite;
+  -moz-animation: rotating 10s  infinite;
+  -ms-animation: rotating 10s  infinite;
+  -o-animation: rotating 10s  infinite;
+  animation: rotating 10s  infinite;
+}

@@ -1,0 +1,26 @@
+#slider-container {
+    width: 100%;
+    margin: 0 auto;
+    background: red;
+    
+}
+
+.slider-wrapper { 
+    position: relative;
+    height: 700px;
+    background: blue;
+}
+
+.slider-wrapper li {       
+    display: none;    
+}
+.slider-wrapper li img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    
+ }
+li.slide-current { 
+    display: block;    
+}

@@ -2,9 +2,28 @@
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/home/slider.css') }}">
 @stop
 
 @section('content')
+<section id="slider-container">
+    <ul id="slider" class="slider-wrapper">
+        <li class="slide-current">
+            <img src="images/sliderIndex/1.jpg">
+        </li>
+        <li>
+            <img src="images/sliderIndex/2.jpg">
+        </li>
+        <li>
+            <img src="images/sliderIndex/3.jpg">
+        </li>
+        <li>
+            <img src="images/sliderIndex/4.jpg">
+        </li>
+    </ul>
+</section>
+
+
 
     <div id="why" class="ui vertical stripe segment">
         <div class="ui middle aligned stackable grid container">
