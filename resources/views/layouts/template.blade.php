@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- StyleSheets -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
+    
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,900" rel="stylesheet">
 
     @yield('stylesheets')
 
@@ -36,24 +39,18 @@
 <!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
                 <img class="logo" src="images/logo/header.png" style="width: 150px">                
             </a>
-            <a href="#" class="item">Home</a>
-            <div class="ui simple dropdown item">
-                Dropdown <i class="dropdown icon"></i>
-                <div class="menu">
-                    <a class="item" href="#">Link Item</a>
-                    <a class="item" href="#">Link Item</a>
-                    <div class="divider"></div>
-                    <div class="header">Header Item</div>
-                    <div class="item">
-                        <i class="dropdown icon"></i>
-                        Sub Menu
-                        <div class="menu">
-                            <a class="item" href="#">Link Item</a>
-                            <a class="item" href="#">Link Item</a>
-                        </div>
+            
+            <div class="right item" style="padding: 0px;">
+                <a href="#" class="item">Inicio</a>
+                <div class="ui simple dropdown item">
+                    Portafolio <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" href="#">Link Item</a>
+                        <a class="item" href="#">Link Item</a>                                                
                     </div>
-                    <a class="item" href="#">Link Item</a>
                 </div>
+                <a href="#" class="item">Blog</a>
+                <a href="#" class="item">Contacto</a>
             </div>
         </div>
     </div>
