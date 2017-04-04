@@ -6,22 +6,20 @@
 @stop
 
 @section('content')
-<section id="slider-container">
-    <ul id="slider" class="slider-wrapper">
-        <li class="slide-current">
-            <img src="images/sliderIndex/1.jpg">
-        </li>
-        <li>
-            <img src="images/sliderIndex/2.jpg">
-        </li>
-        <li>
-            <img src="images/sliderIndex/3.jpg">
-        </li>
-        <li>
-            <img src="images/sliderIndex/4.jpg">
-        </li>
-    </ul>
-</section>
+<div id="slider-container">    
+    <div>
+        <img src="images/sliderIndex/1.jpg">
+    </div>
+    <div>
+        <img src="images/sliderIndex/2.jpg">
+    </div>
+    <div>
+        <img src="images/sliderIndex/3.jpg">
+    </div>
+    <div>
+        <img src="images/sliderIndex/4.jpg">
+    </div>    
+</div>
 
 
 
@@ -65,5 +63,5 @@
 
 
 @section('javascript')
-    
+<script src="{{asset('js/sliderIndex.js')}}"></script>
 @stop

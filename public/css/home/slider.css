@@ -1,29 +1,29 @@
+html, body, #fullheight {
+    min-height: 100% !important;
+    height: 100%;
+}
 #slider-container {
     width: 100%;
     margin: 0 auto;
-    background: red;
-    height: 700px;
-    
-    
-}
-
-.slider-wrapper { 
-    position: relative;
-    height: 100%;
-    background: blue;
-}
-
-.slider-wrapper li {       
-    display: none;    
-}
-.slider-wrapper li img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-width: 100%;
-    
- }
-li.slide-current { 
+    background-color: #9BA2AB;
     display: block; 
-    position: initial
+    overflow: hidden;
+    position: relative;
+    
 }
+
+#slider-container div { 
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+#slider-container img{ 
+    
+    width: 100%;
+    
+}
+#activeSliderImg img
+{   
+    display: block;
+ }

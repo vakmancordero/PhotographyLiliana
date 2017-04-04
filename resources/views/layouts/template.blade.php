@@ -45,8 +45,9 @@
                 <div class="ui simple dropdown item">
                     Portafolio <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a class="item" href="#">Link Item</a>
-                        <a class="item" href="#">Link Item</a>                                                
+                        <a class="item" href="#">XV</a>
+                        <a class="item" href="#">Bodas</a>
+                        <a class="item" href="#">Especiales</a>
                     </div>
                 </div>
                 <a href="#" class="item">Blog</a>
