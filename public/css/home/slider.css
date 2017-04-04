@@ -2,12 +2,14 @@
     width: 100%;
     margin: 0 auto;
     background: red;
+    height: 700px;
+    
     
 }
 
 .slider-wrapper { 
     position: relative;
-    height: 700px;
+    height: 100%;
     background: blue;
 }
 
@@ -22,5 +24,6 @@
     
  }
 li.slide-current { 
-    display: block;    
+    display: block; 
+    position: initial
 }

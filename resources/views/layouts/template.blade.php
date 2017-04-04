@@ -6,6 +6,7 @@
 
     <!-- StyleSheets -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
 
     @yield('stylesheets')
 
@@ -18,8 +19,16 @@
     </style>
 
 </head>
-    <body>
-
+<body>
+    
+<div id="loader">
+        <img src='loader/loader2.png' id="loader2">
+        <img src='loader/loader1.png' id="loader1" class="rotating">        
+        <img src='loader/loader3.png' id="loader3">
+</div>
+    
+<div id="content">    
+    
     <div class="ui fixed inverted menu">
         <div class="ui container">
             <a href="#" class="header item">
@@ -95,12 +104,14 @@
             </div>
         </div>
     </div>
-
+</div>
     <!-- JavaScript -->
     <script src="{{ asset('jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('loader/loader.js') }}"></script>
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
 
     @yield('javascript')
 
     </body>
 </html>
+

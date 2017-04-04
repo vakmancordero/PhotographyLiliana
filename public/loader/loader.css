@@ -22,10 +22,8 @@
 
 #loader2 { 
     z-index: 2;
-
     left: 0;
     right: 0;
-
     margin: auto;
     display: block;
     width: 100%;
