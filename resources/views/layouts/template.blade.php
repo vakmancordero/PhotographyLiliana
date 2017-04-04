@@ -7,6 +7,7 @@
     <!-- StyleSheets -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
 
     @yield('stylesheets')
 
@@ -29,11 +30,11 @@
     
 <div id="content">    
     
-    <div class="ui fixed inverted menu">
-        <div class="ui container">
+    <div class="ui fixed menu" style="background:white;">
+        <div class="ui container" style="color: #000">
             <a href="#" class="header item">
-                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">
-                Project Name
+<!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
+                <img class="logo" src="images/logo/header.png" style="width: 150px">                
             </a>
             <a href="#" class="item">Home</a>
             <div class="ui simple dropdown item">
