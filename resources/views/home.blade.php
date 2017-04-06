@@ -6,7 +6,9 @@
 @stop
 
 @section('content')
-<div id="slider-container">    
+<h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
+<h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
+<div id="slider-container">      
     <div>
         <img src="images/sliderIndex/1.jpg">
     </div>

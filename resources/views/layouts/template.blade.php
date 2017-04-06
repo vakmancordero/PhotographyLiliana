@@ -35,7 +35,7 @@
     
     <div class="ui fixed menu" style="background:white;">
         <div class="ui container" style="color: #000">
-            <a href="#" class="header item">
+            <a href="{{ url('/')}}" class="header item">
 <!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
                 <img class="logo" src="images/logo/header.png" style="width: 150px">                
             </a>
@@ -105,10 +105,10 @@
     </div>
 </div>
     <!-- JavaScript -->
-    <script src="{{ asset('jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('loader/loader.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
-
+    <script src="{{ asset('loader/loader.js') }}"></script>
     @yield('javascript')
 
     </body>
