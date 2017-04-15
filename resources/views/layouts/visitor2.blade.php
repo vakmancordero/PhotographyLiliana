@@ -7,8 +7,8 @@
     <!-- StyleSheets -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
-    
+
+
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,900" rel="stylesheet">
 
@@ -24,22 +24,14 @@
 
 </head>
 <body>
-    
-<div id="loader">
-        <img src='loader/loader2.png' id="loader2">
-        <img src='loader/loader1.png' id="loader1" class="rotating">        
-        <img src='loader/loader3.png' id="loader3">
-</div>
-    
-<div id="content">    
-    
+
     <div class="ui fixed menu" style="background:white;">
         <div class="ui container" style="color: #000">
             <a href="{{ url('/')}}" class="header item">
-<!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
-                <img class="logo" src="images/logo/header.png" style="width: 150px">                
+                <!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
+                <img class="logo" src="images/logo/header.png" style="width: 150px">
             </a>
-            
+
             <div class="right item" style="padding: 0px;">
                 <a href="#" class="item">Inicio</a>
                 <div class="ui simple dropdown item">
@@ -104,14 +96,14 @@
             </div>
         </div>
     </div>
-</div>
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      
-    <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
-    <script src="{{ asset('loader/loader.js') }}"></script>
-    @yield('javascript')
 
-    </body>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
+
+@yield('javascript')
+
+</body>
 </html>
 
