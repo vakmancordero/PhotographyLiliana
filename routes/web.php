@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('visitor/index');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
