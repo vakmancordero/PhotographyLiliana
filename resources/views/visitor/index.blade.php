@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.visitor')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
@@ -6,22 +6,22 @@
 @stop
 
 @section('content')
-<h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
-<h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
-<div id="slider-container">      
-    <div>
-        <img src="images/sliderIndex/1.jpg">
+    <h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
+    <h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
+    <div id="slider-container">
+        <div>
+            <img src="images/sliderIndex/1.jpg">
+        </div>
+        <div>
+            <img src="images/sliderIndex/2.jpg">
+        </div>
+        <div>
+            <img src="images/sliderIndex/3.jpg">
+        </div>
+        <div>
+            <img src="images/sliderIndex/4.jpg">
+        </div>
     </div>
-    <div>
-        <img src="images/sliderIndex/2.jpg">
-    </div>
-    <div>
-        <img src="images/sliderIndex/3.jpg">
-    </div>
-    <div>
-        <img src="images/sliderIndex/4.jpg">
-    </div>    
-</div>
 
 
 
@@ -65,5 +65,5 @@
 
 
 @section('javascript')
-<script src="{{asset('js/sliderIndex.js')}}"></script>
+    <script src="{{asset('js/sliderIndex.js')}}"></script>
 @stop
