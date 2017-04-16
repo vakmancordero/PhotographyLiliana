@@ -10,7 +10,8 @@ use Intervention\Image\ImageManager;
 class CurriculumController extends Controller {
 
     public function index() {
-        return view('admin/curriculum/index');
+        $curriculumSections = CurriculumTypes::get();
+        return view('admin/curriculum/index')->with(['curriculumSections' => $curriculumSections]);
     }
 
     public function create() {
@@ -29,6 +30,11 @@ class CurriculumController extends Controller {
         $registroNuevo->save();
 
         return back()->with('msj' , 1);
+    }
+
+    public function centroCarga($id)
+    {
+        return view('admin/curriculum/charge')->with('id', $id);
     }
 
     public function something() {

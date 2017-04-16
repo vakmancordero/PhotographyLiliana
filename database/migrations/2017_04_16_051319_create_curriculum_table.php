@@ -16,10 +16,10 @@ class CreateCurriculumTable extends Migration
         Schema::create('curriculum', function (Blueprint $table) {
             $table->increments('id');
             $table->string('img');
-            $table->string('title');
-            $table->string('description');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
             $table->string('type');
-            $table->integer('order');
+            $table->integer('order')->nullable();
         });
     }
 

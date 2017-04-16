@@ -16,7 +16,7 @@ class CreateCurriculumTypesTable extends Migration
         Schema::create('curriculum_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type')->unique();
-            $table->integer('order');
+            $table->integer('order')->nullable();
         });
     }
 
