@@ -19,5 +19,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('admin/curriculum', 'CurriculumController@index');
+Route::get('admin/curriculum/create', 'CurriculumController@create');
+Route::post('admin/curriculum/create', 'CurriculumController@newCurriculum');
 
 Route::get('jajaja/something', 'CurriculumController@something');

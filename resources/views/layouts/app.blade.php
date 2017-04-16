@@ -30,7 +30,7 @@
 <div style="position: relative">
     <div class="ui  vertical visible inverted sidebar menu" id="idMenu">
         <img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block">
-        <a class="active item">Curriculum</a>
+        <a class="active item" href="{{url('admin/curriculum')}}">Curriculum</a>
         <a class="item">Blog</a>
         <a class="item">Clientes</a>
         <a class="item">Careers</a>
