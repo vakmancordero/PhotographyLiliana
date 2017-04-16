@@ -1,0 +1,42 @@
+body {
+    background-color: #F3F4F5;
+}
+.contenedorPrincipalPanel {
+    width: 100%;
+    margin-top:25px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction:row;
+}
+
+#spaceSidebar {
+    width: 250px;
+}
+
+#spaceSidebar2{
+    width: 100%;
+}
+
+#principal {
+    width: 85%;
+    margin: 0 auto;
+    max-width: 1400px;
+    display: block;
+    background-color: white;
+    padding: 13px;
+}
+@media screen and (max-width: 767px) {
+    #spaceSidebar {
+        display: none;
+    }
+
+    #principal {
+        width: 98%;
+        padding: 12px;
+    }
+
+    .contenedorPrincipalPanel {
+        margin-top:0px;
+    }
+}

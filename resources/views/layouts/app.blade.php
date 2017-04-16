@@ -12,40 +12,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/principalAdministrador.css') }}">
     @yield('stylesheets')
-    <style>
-        .contenedorPrincipalPanel {
-            width: 100%;
-            background: #fff;
-
-
-            margin:0 auto;
-
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-
-            flex-direction:row;
-
-        }
-        #spaceSidebar {
-            width: 250px;
-
-        }
-        #spaceSidebar2{
-            width: 100%;
-
-        }
-
-        #principal {
-            width: 85%;
-            margin: 0 auto;
-            max-width: 1400px;
-            display: block;
-            background-color: #0e8c8c;
-        }
-
-    </style>
 
 
     <!-- Scripts -->
@@ -133,45 +101,12 @@
 </div>
 
 
-
-
-
-
-
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
-    <script>
-        $('#toggle').click(function(){
-           $('.ui.sidebar').sidebar('toggle');
-        });
-
-        sidebarVisible();
-        $(document).ready(function(){
-
-
-
-
-        });
-
-        $( window ).resize(function() {
-            sidebarVisible();
-        });
-
-        function sidebarVisible() {
-            var windowidth= $(window).width();
-            if (windowidth < 768) {
-                $('#idMenu').removeClass('visible').addClass('right');
-            } else{
-                $('#idMenu').removeClass('right').addClass('visible');
-            }
-        }
-    </script>
+    <script src="{{ asset('js/appAdmin/principalAdministrador.js') }}"></script>
     @yield('script')
 
 </body>
 </html>
+
