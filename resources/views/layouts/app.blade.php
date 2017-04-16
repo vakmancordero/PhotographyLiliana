@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<div lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,39 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
     @yield('stylesheets')
+    <style>
+        .contenedorPrincipalPanel {
+            width: 100%;
+            background: #fff;
 
+
+            margin:0 auto;
+
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+
+            flex-direction:row;
+
+        }
+        #spaceSidebar {
+            width: 250px;
+
+        }
+        #spaceSidebar2{
+            width: 100%;
+
+        }
+
+        #principal {
+            width: 85%;
+            margin: 0 auto;
+            max-width: 1400px;
+            display: block;
+            background-color: #0e8c8c;
+        }
+
+    </style>
 
 
     <!-- Scripts -->
@@ -24,10 +56,10 @@
     </script>
     @yield('javascript-before')
 </head>
-<body>
+<>
 
 <!-- Sidebar Menu Computer -->
-
+<div style="position: relative">
     <div class="ui  vertical visible inverted sidebar menu" id="idMenu">
         <img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block">
         <a class="active item">Curriculum</a>
@@ -46,6 +78,7 @@
             {{ csrf_field() }}
         </form>
     </div>
+</div>
 
 
 <div class="ui fixed menu tablet computer only grid">
@@ -88,15 +121,24 @@
     </div>
 </div>
 
+<br><br>
 
-
-
-
-
-
-<br><br><br>
-
+<div class="contenedorPrincipalPanel">
+    <div id="spaceSidebar">1</div>
+    <div id="spaceSidebar2">
+        <div id="principal">
         @yield('content')
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
