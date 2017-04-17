@@ -19,6 +19,10 @@ class CreateCurriculumImageTable extends Migration
             $table->string('name')->nullable();
             $table->string('path')->nullable();
             $table->integer('order')->nullable();
+	        $table->foreign('curriculum_id')
+		        ->references('id')
+		        ->on('curriculum')
+		        ->onDelete('cascade');
         });
     }
 

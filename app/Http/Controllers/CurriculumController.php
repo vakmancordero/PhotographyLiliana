@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Curriculum;
+use App\CurriculumImage;
+use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CurriculumController extends Controller {
 
@@ -40,11 +42,24 @@ class CurriculumController extends Controller {
     	
         return view('admin/curriculum/upload')->with('curriculum', $curriculum);
     }
-
-    public function something() {
-
-
-
-        return "working";
-    }
+	
+	public function addImage($id, Request $request) {
+    	
+		$this->validate($request, [
+			'image' => 'required|mimes:jpg,jpeg,gif,png,bmp'
+		]);
+		
+		$curriculum = Curriculum::getOne($id);
+		
+		$img = $this->makeImage($request->file('image'));
+		
+		$curriculum->saveImage($img);
+		
+		return $img;
+	}
+	
+	private function makeImage(UploadedFile $file) {
+		return CurriculumImage::build($file->getClientOriginalName())->store($file);
+	}
+	
 }
