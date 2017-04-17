@@ -55,10 +55,15 @@
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
             </div>
         </div>
-
         <br>
+        <div class="ui toggle checkbox">
+            <input type="checkbox" name="level">
+            <label>Administrador</label>
+        </div>
 
-                <button class="ui primary button" type="submit">Login </button>
+        <br><br>
+
+                <button class="ui primary button" type="submit">Register </button>
 
 
     </form>

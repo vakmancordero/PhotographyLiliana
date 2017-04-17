@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div lang="{{ config('app.locale') }}">
+<html lang="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,8 +29,8 @@
 <!-- Sidebar Menu Computer -->
 <div style="position: relative">
     <div class="ui  vertical visible inverted sidebar menu" id="idMenu">
-        <img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block">
-        <a class="active item" href="{{url('admin/curriculum')}}">Curriculum</a>
+        <a href="{{url('home')}}"><img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block"></a>
+        <a class="item" href="{{url('admin/curriculum')}}">Curriculum</a>
         <a class="item">Blog</a>
         <a class="item">Clientes</a>
         <a class="item">Careers</a>
@@ -45,6 +45,9 @@
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
+        <br><br>
+        <a href="{{url('/')}}">
+            <img src="{{url('images/logo/rueda.png')}}" width="50%" style="margin: 0 auto; display: block;" ></a>
     </div>
 </div>
 
@@ -87,7 +90,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 <br><br>
 
