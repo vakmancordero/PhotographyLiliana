@@ -3,6 +3,7 @@
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/upload/imageUploader.js') }}"></script>
+    <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 @stop
 
 @section('stylesheets')
@@ -44,7 +45,7 @@
 
                             </div>
                         </div>
-                    
+
                 @endforeach
             </div>
 
@@ -80,7 +81,3 @@
     </div>
 
 @endsection
-
-@section('script')
-    <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
-@stop
