@@ -23,24 +23,24 @@
             </div>
         </div>
         <div class="col-md-8 gallery">
-            {{--@foreach ($article->images->chunk(4) as $set)--}}
-                {{--<div class="row">--}}
-                    {{--@foreach ($set as $image)--}}
-                        {{--<div class="col-md-3">--}}
-                            {{--<a href="/{{ $image->path }}" data-lity>--}}
-                                {{--<img class="img-fluid img-thumbnail"--}}
-                                     {{--src="/{{ $image->path }}" alt="" width="200"--}}
-                                     {{--height="200">--}}
-                            {{--</a>--}}
-                            {{--<form class="deleteImageForm" action="/images/{{ $image->id }}">--}}
-                                {{--{!! csrf_field() !!}--}}
-                                {{--<input type="hidden" name="_method" value="DELETE">--}}
-                                {{--<button type="submit">Delete</button>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
-                    {{--@endforeach--}}
-                {{--</div>--}}
-            {{--@endforeach--}}
+            @foreach ($curriculum->curriculumImages->chunk(4) as $set)
+                <div class="row">
+                    @foreach ($set as $image)
+                        <div class="col-md-3">
+                            <a href="/{{ $image->path }}" data-lity>
+                                <img class="img-fluid img-thumbnail"
+                                     src="/{{ $image->path }}" alt="" width="200"
+                                     height="200">
+                            </a>
+                            <form class="deleteImageForm" action="/admin/curriculum/images/{{ $image->id }}">
+                                {!! csrf_field() !!}
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </div>
+                    @endforeach
+                </div>
+            @endforeach
             {{--@if(!Auth::guest())--}}
                 {{--@if ($article->ownedBy(Auth::user()))--}}
                     <hr>

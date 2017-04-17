@@ -14,7 +14,7 @@ Dropzone.options.addImagesForm = {
 
         $.ajax({
             type: 'GET',
-            url: '/images/' + file.serverImageId,
+            url: '/admin/curriculum/images/' + file.serverImageId,
             success: function(data) {
                 console.log("cool! Kaizen");
             },

@@ -20,6 +20,8 @@ Route::get('admin/curriculum/create', 'CurriculumController@create');
 // Crea el curriculum.
 Route::post('admin/curriculum/create', 'CurriculumController@createCurriculum');
 
+Route::get('admin/curriculum/images/{id}', 'CurriculumController@destroyImage');
+
 // -> GET
 // Retorna el centro de carga para el curriculum seleccionado [ID]
 Route::get('admin/curriculum/upload/{id}', 'CurriculumController@uploadImages');

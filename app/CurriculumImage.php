@@ -4,6 +4,8 @@ namespace App;
 
 use App\Curriculum;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CurriculumImage extends Model {

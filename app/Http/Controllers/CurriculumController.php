@@ -62,4 +62,11 @@ class CurriculumController extends Controller {
 		return CurriculumImage::build($file->getClientOriginalName())->store($file);
 	}
 	
+	public function destroyImage($id) {
+    	
+		CurriculumImage::findOrFail($id)->delete();
+		
+		return back();
+	}
+	
 }
