@@ -15,11 +15,9 @@ class CreateCurriculumTable extends Migration
     {
         Schema::create('curriculum', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('img');
-            $table->string('title')->nullable();
+            $table->string('name');
             $table->string('description')->nullable();
-            $table->string('type');
-            $table->integer('order')->nullable();
+            $table->string('image')->nullable();
         });
     }
 

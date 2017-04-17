@@ -1,26 +1,25 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('visitor/index');
 });
+
 Auth::routes();
 
+// Vista principal
 Route::get('/home', 'HomeController@index');
 
+// Lista los curriculums existentes.
 Route::get('admin/curriculum', 'CurriculumController@index');
-Route::get('admin/curriculum/create', 'CurriculumController@create');
-Route::post('admin/curriculum/create', 'CurriculumController@newCurriculum');
-Route::get('admin/curriculum/cargar/{id}', 'CurriculumController@centroCarga');
 
-Route::get('jajaja/something', 'CurriculumController@something');
+// -> GET
+// Retorna la vista para crear un curriculum.
+Route::get('admin/curriculum/create', 'CurriculumController@create');
+
+// -> POST
+// Crea el curriculum.
+Route::post('admin/curriculum/create', 'CurriculumController@createCurriculum');
+
+// -> GET
+// Retorna el centro de carga para el curriculum seleccionado [ID]
+Route::get('admin/curriculum/cargar/{id}', 'CurriculumController@addCurriculumImages');

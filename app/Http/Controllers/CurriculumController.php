@@ -4,37 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Curriculum;
-use App\CurriculumTypes;
 use Intervention\Image\ImageManager;
 
 class CurriculumController extends Controller {
 
     public function index() {
-        $curriculumSections = CurriculumTypes::get();
-        return view('admin/curriculum/index')->with(['curriculumSections' => $curriculumSections]);
+        
+    	$curriculums = Curriculum::get();
+        
+        return view('admin/curriculum/index')->with(
+        	['curriculums' => $curriculums]
+        );
+        
     }
 
     public function create() {
         return view('admin/curriculum/create');
     }
 
-    public function newCurriculum(Request $request) {
+    public function createCurriculum(Request $request) {
 
         $this->validate($request, [
             'type' => 'required || unique:curriculum_types, type',
         ]);
 
-        $registroNuevo = new CurriculumTypes();
-        $registroNuevo->type = $request->type;
-        $registroNuevo->order = 1;
-        $registroNuevo->save();
+        $curriculum = new Curriculum();
+        
+        $curriculum->name = $request->name;
+        $curriculum->description = $request->description;
+        
+        $curriculum->save();
 
         return back()->with('msj' , 1);
     }
 
-    public function centroCarga($id)
-    {
-        return view('admin/curriculum/charge')->with('id', $id);
+    public function addCurriculumImages($id) {
+    	
+    	$curriculum = Curriculum::find($id);
+    	
+        return view('admin/curriculum/charge')->with('curriculum', $curriculum);
+        
     }
 
     public function something() {

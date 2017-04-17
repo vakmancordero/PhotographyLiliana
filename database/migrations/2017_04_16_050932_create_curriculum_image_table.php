@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCurriculumTypesTable extends Migration
+class CreateCurriculumImageTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateCurriculumTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('curriculum_types', function (Blueprint $table) {
+        Schema::create('curriculum_image', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type')->unique();
-            $table->string('description')->nullable();
+            $table->integer('curriculum_id');
+            $table->string('image')->nullable();
             $table->integer('order')->nullable();
         });
     }
@@ -28,6 +28,6 @@ class CreateCurriculumTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('curriculum_types');
+        Schema::dropIfExists('curriculum_image');
     }
 }
