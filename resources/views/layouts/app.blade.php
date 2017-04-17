@@ -15,14 +15,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/principalAdministrador.css') }}">
     @yield('stylesheets')
 
-
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
     @yield('javascript-before')
+
 </head>
 
 <!-- Sidebar Menu Computer -->
@@ -107,6 +108,7 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
     <script src="{{ asset('js/appAdmin/principalAdministrador.js') }}"></script>
+
     @yield('script')
 
 </body>
