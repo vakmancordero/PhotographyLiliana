@@ -21,7 +21,7 @@ class CurriculumController extends Controller {
     public function newCurriculum(Request $request) {
 
         $this->validate($request, [
-            'type' => 'required||unique:curriculum_types,type',
+            'type' => 'required || unique:curriculum_types, type',
         ]);
 
         $registroNuevo = new CurriculumTypes();
