@@ -45,11 +45,15 @@
                 </a>
                 <div class="ui clearing divider"></div>
                 <div id="photoContainer">
+
                     @for($n = 0; $n <= 15; $n++)
-                        <div id="photos" style="background-image: url(https://unsplash.imgix.net/photo-1414490929659-9a12b7e31907);"></div>
-                        <div id="photoHover"></div>
+                        <div id="photos" style="background-image: url(https://unsplash.imgix.net/photo-1414490929659-9a12b7e31907);">
+                            <div id="photoHover">
+                                <i class="trash icon"></i>
+                            </div>
+                        </div>
                     @endfor
-                    <div id="especial"></div>
+
                 </div>
 
             </div>
@@ -59,3 +63,7 @@
     @endif
 
 @endsection
+
+@section('script')
+    <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
+@stop
