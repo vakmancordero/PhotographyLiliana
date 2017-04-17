@@ -39,7 +39,7 @@
 }
 
 #photoHover i:hover {
-    cursor: help;
+    /*cursor: help;*/
 }
 
 @media screen and (max-width: 1102px) {

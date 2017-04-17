@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/principalAdministrador.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('toastr/toastr.min.css') }}">
     @yield('stylesheets')
 
     <!-- Scripts -->
@@ -107,6 +108,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
+    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('js/appAdmin/principalAdministrador.js') }}"></script>
 
     @yield('script')

@@ -3,6 +3,7 @@
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/upload/imageUploader.js') }}"></script>
+    <script type="text/javascript" src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 @stop
 
 @section('stylesheets')
@@ -13,7 +14,6 @@
 @section('content')
 
     <h1>Currículums - {{ $curriculum->name }}</h1>
-    <h3>Añada sus imágenes</h3>
 
     <div class="row">
         <div class="col-md-4">
@@ -23,64 +23,57 @@
         </div>
     </div>
 
-        <form id="addImagesForm"
-              action="{{ route('store_path', [$curriculum->id]) }}"
-              method="POST"
-              class="dropzone">
-            {{ csrf_field() }}
-        </form>
-<br>
+    <h3>Añada sus imágenes</h3>
 
-            <div id="photoContainer">
-                @foreach ($curriculum->curriculumImages as $image)
-
-                        <div id="photos" style="background-image: url(/{{ $image->path }}" data-lity>
-                            <div id="photoHover">
-                                <form class="deleteImageForm" action="/admin/curriculum/images/{{ $image->id }}">
-                                    {!! csrf_field() !!}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="ui icon button"><i class="trash icon"></i></button>
-                                </form>
-
-                            </div>
-                        </div>
-                    
-                @endforeach
-            </div>
+    <form id="addImagesForm"
+          action="{{ route('store_path', [$curriculum->id]) }}"
+          method="POST"
+          class="dropzone">
+        {{ csrf_field() }}
+    </form>
 
     <br>
-    <div class="row">
-        <div class="col-md-8 gallery">
-            @foreach ($curriculum->curriculumImages->chunk(4) as $set)
 
-                    @foreach ($curriculum->curriculumImages as $image)
-                        <div class="col-md-3">
-                            <a href="/{{ $image->path }}" data-lity>
-                                <img class="img-fluid img-thumbnail"
-                                     src="/{{ $image->path }}" alt="" width="200"
-                                     height="200">
-                            </a>
-                            <form class="deleteImageForm" action="/admin/curriculum/images/{{ $image->id }}">
-                                {!! csrf_field() !!}
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit">Delete</button>
-                            </form>
-                        </div>
-                    @endforeach
+    <div id="photoContainer">
 
-            @endforeach
-            {{--@if(!Auth::guest())--}}
-                {{--@if ($article->ownedBy(Auth::user()))--}}
-                    <hr>
+        @foreach ($curriculum->curriculumImages as $image)
 
+            <div id="photos" style="background-image: url('{{url($image->path)}}')" data-lity>
+                <div id="photoHover">
+                    <form class="deleteImageForm" action="/admin/curriculum/images/{{ $image->id }}">
+                        {!! csrf_field() !!}
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="ui icon button"><i class="trash icon"></i></button>
+                    </form>
+                </div>
+            </div>
 
-                {{--@endif--}}
-            {{--@endif--}}
-        </div>
+        @endforeach
+
     </div>
 
-@endsection
+    <br>
 
-@section('script')
-    <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
-@stop
+    {{--<div class="row">--}}
+        {{--<div class="col-md-8 gallery">--}}
+            {{--@foreach ($curriculum->curriculumImages->chunk(4) as $set)--}}
+                {{--@foreach ($curriculum->curriculumImages as $image)--}}
+                    {{--<div class="col-md-3">--}}
+                        {{--<a href="/{{ $image->path }}" data-lity>--}}
+                            {{--<img class="img-fluid img-thumbnail"--}}
+                                 {{--src="/{{ $image->path }}" alt="" width="200"--}}
+                                 {{--height="200">--}}
+                        {{--</a>--}}
+                        {{--<form class="deleteImageForm" action="/admin/curriculum/images/{{ $image->id }}">--}}
+                            {{--{!! csrf_field() !!}--}}
+                            {{--<input type="hidden" name="_method" value="DELETE">--}}
+                            {{--<button type="submit">Eliminar</button>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
+                {{--@endforeach--}}
+            {{--@endforeach--}}
+            {{--<hr>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+@endsection

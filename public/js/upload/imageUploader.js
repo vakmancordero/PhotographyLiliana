@@ -16,7 +16,7 @@ Dropzone.options.addImagesForm = {
             type: 'GET',
             url: '/admin/curriculum/images/' + file.serverImageId,
             success: function(data) {
-                console.log("cool! Kaizen");
+                toastr.success('La imagen ha sido eliminada correctamente')
             },
             error: function(data) {
                 console.log("Error");
@@ -44,7 +44,9 @@ $(function () {
             url: action,
             success: function(data) {
 
-                element.parent().remove();
+                element.parent().parent().remove();
+
+                toastr.success('La imagen ha sido eliminada correctamente')
 
             },
             error: function(data) {
