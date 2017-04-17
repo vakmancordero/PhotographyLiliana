@@ -20,6 +20,8 @@ Route::get('admin/curriculum/create', 'CurriculumController@create');
 // Crea el curriculum.
 Route::post('admin/curriculum/create', 'CurriculumController@createCurriculum');
 
+Route::get('admin/curriculum/delete/{id}', 'CurriculumController@destroyCurriculum');
+
 Route::get('admin/curriculum/images/{id}', 'CurriculumController@destroyImage');
 
 // -> GET

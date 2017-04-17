@@ -39,7 +39,7 @@ class CurriculumController extends Controller {
     public function uploadImages($id) {
     	
     	$curriculum = Curriculum::find($id);
-    	
+
         return view('admin/curriculum/upload')->with('curriculum', $curriculum);
     }
 	
@@ -68,5 +68,20 @@ class CurriculumController extends Controller {
 		
 		return back();
 	}
+
+	public function destroyCurriculum($id){
+
+        $curriculum = Curriculum::find($id);
+        $images = CurriculumImage::where(['curriculum_id' => $id])->get();
+
+        foreach($images as $image) {
+
+            $image->delete();
+
+        }
+
+            $curriculum->delete();
+            return back();
+    }
 	
 }
