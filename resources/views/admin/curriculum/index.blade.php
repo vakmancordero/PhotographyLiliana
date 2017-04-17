@@ -1,7 +1,9 @@
 @extends('layouts.app')
+@section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/photosFacebook.css') }}">
+@stop
 
 @section('content')
-
 <div class="">
 
     <a href="{{url('admin/curriculum/create')}}">
@@ -42,9 +44,13 @@
                     </div>
                 </a>
                 <div class="ui clearing divider"></div>
-                @for($n = 0; $n <= 15; $n++)
-                    <div>holi</div>
-                @endfor
+                <div id="photoContainer">
+                    @for($n = 0; $n <= 15; $n++)
+                        <div id="photos" style="background-image: url(https://unsplash.imgix.net/photo-1414490929659-9a12b7e31907);"></div>
+                        <div id="photoHover"></div>
+                    @endfor
+                    <div id="especial"></div>
+                </div>
 
             </div>
 
