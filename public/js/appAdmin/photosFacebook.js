@@ -4,5 +4,5 @@ $(document).ready(function(){
 
 function phothosWidth() {
     var photoWidth = $('#photos').width();
-    $('#photos').css('height' , photoWidth);
+
 }
