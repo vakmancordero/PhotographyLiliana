@@ -24,18 +24,18 @@ class CurriculumController extends Controller {
 
     public function createCurriculum(Request $request) {
 
-        $this->validate($request, [
-            'type' => 'required || unique:curriculum_types, type',
-        ]);
+//        $this->validate($request, [
+//            'name' => 'required || unique:curriculum, name',
+//        ]);
 
         $curriculum = new Curriculum();
         
         $curriculum->name = $request->name;
-        $curriculum->description = $request->description;
+        //$curriculum->description = $request->description;
         
         $curriculum->save();
 
-        return back()->with('msj' , 1);
+        return back()->with('msj', 1);
     }
 
     public function addCurriculumImages($id) {

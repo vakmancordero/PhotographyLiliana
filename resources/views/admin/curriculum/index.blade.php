@@ -2,25 +2,48 @@
 
 @section('content')
 
+<div class="">
+    <a href="{{url('admin/curriculum/create')}}">
+        <button class="ui green button icon right floated ">
+            <i class="plus icon"></i>
+        </button>
+    </a>
     <h1>Panel de control - Curriculum</h1>
 
-    <a href="{{url('admin/curriculum/create')}}">
-        Crear nuevo tipo curriculum
-    </a>
+</div>
 
-    <hr>
+    @if(isset($curriculums))
 
-    @if(isset($curriculumTypes))
+        @foreach($curriculums as $curriculum)
 
-        @foreach($curriculumTypes as $curriculumType)
+            <div class="ui segment">
+                <h3 class="ui  floated header">{{ $curriculum->name }}</h3>
 
-            <h3>{{ $curriculumType->type }}</h3>
+                <a href="{{url('admin/curriculum/cargar/'. $curriculum->id)}}">
+                    <div class="ui right floated  header" tabindex="0">
+                        <div class="ui red button">
+                            <i class="trash icon"></i>
+                        </div>
 
-            <a href="{{url('admin/curriculum/cargar/' . $curriculumType->id)}}">
-                Abrir sección de {{ $curriculumType->type }}
-            </a>
+                    </div>
+                </a>
 
-            <hr>
+                <a href="{{url('admin/curriculum/cargar/'. $curriculum->id)}}">
+                    <div class="ui right floated labeled button" tabindex="0">
+                        <div class="ui blue button">
+                            <i class="image icon"></i> Agregar Fotos
+                        </div>
+                        <a class="ui basic blue left pointing label">
+                            1,048
+                        </a>
+                    </div>
+                </a>
+                <div class="ui clearing divider"></div>
+                @for($n = 0; $n <= 15; $n++)
+                    <div>holi</div>
+                @endfor
+
+            </div>
 
         @endforeach
 

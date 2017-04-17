@@ -11,5 +11,5 @@ class Curriculum extends Model {
 	protected $fillable = [
 		'name', 'description', 'image'
 	];
-	
+	public $timestamps = false;
 }
