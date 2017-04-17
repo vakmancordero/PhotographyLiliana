@@ -1,0 +1,36 @@
+#photoContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    flex-flow: row wrap;
+
+}
+
+#photos {
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+
+    -webkit-transition:  .3s; /* Safari */
+    transition:  .3s;
+}
+
+#photos:hover{
+    cursor: pointer;
+    opacity: .85;
+}
+
+#especial {
+    height: 150px;
+    width: 150px;
+
+    background-size: cover;
+    background-position: center;
+    display: inline-block;
+
+    background-image: url(https://s-media-cache-ak0.pinimg.com/736x/d5/75/7d/d5757dd8782937cfd02130cdb107d108.jpg);
+}
