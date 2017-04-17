@@ -16,7 +16,8 @@ class CreateCurriculumImageTable extends Migration
         Schema::create('curriculum_image', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('curriculum_id');
-            $table->string('image')->nullable();
+            $table->string('name')->nullable();
+            $table->string('path')->nullable();
             $table->integer('order')->nullable();
         });
     }

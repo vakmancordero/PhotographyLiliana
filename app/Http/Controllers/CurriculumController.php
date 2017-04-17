@@ -24,14 +24,10 @@ class CurriculumController extends Controller {
 
     public function createCurriculum(Request $request) {
 
-//        $this->validate($request, [
-//            'name' => 'required || unique:curriculum, name',
-//        ]);
-
         $curriculum = new Curriculum();
         
         $curriculum->name = $request->name;
-        //$curriculum->description = $request->description;
+        $curriculum->description = $request->description;
         
         $curriculum->save();
 

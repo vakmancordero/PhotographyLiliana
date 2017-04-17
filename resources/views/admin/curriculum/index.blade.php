@@ -3,11 +3,13 @@
 @section('content')
 
 <div class="">
+
     <a href="{{url('admin/curriculum/create')}}">
         <button class="ui green button icon right floated ">
-            <i class="plus icon"></i>
+            Agregar <i class="plus icon"></i>
         </button>
     </a>
+
     <h1>Panel de control - Curriculum</h1>
 
 </div>
