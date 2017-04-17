@@ -24,7 +24,6 @@
     </script>
     @yield('javascript-before')
 </head>
-<>
 
 <!-- Sidebar Menu Computer -->
 <div style="position: relative">
