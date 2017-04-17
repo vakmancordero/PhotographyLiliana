@@ -1,4 +1,6 @@
+
 Dropzone.options.addImagesForm = {
+
     paramName: 'image',
     maxFilesize: 3,
     acceptedFiles: '.jpg, .jpeg, .gif, .png, .bmp',
@@ -28,7 +30,7 @@ Dropzone.options.addImagesForm = {
         return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
     }
 
-}
+};
 
 $(function () {
 
@@ -39,22 +41,36 @@ $(function () {
         var element = $(this);
         var action = element.attr("action");
 
-        $.ajax({
-            type: 'GET',
-            url: action,
-            success: function(data) {
+        alertify.confirm("Eliminar imagen...", "Está seguro de eliminar la imagen?.",
 
-                element.parent().parent().remove();
+            function(){
 
-                toastr.success('La imagen ha sido eliminada correctamente')
+                $.ajax({
+                    type: 'GET',
+                    url: action,
+                    success: function(data) {
+
+                        alertify.success('La imagen ha sido eliminada correctamente!');
+
+                        element = element.parent().parent();
+
+                        element.fadeOut(500, function(){
+                            element.remove();
+                        });
+
+                    },
+                    error: function(data) {
+                        console.log("Error");
+                        console.log(data);
+                    }
+                });
 
             },
-            error: function(data) {
-                console.log("Error");
-                console.log(data);
+            function(){
+                alertify.error('Eliminación cancelada');
             }
-        });
 
+        );
 
     });
 
