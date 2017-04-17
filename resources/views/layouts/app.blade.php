@@ -54,7 +54,7 @@
 <div class="ui fixed menu tablet computer only grid">
 
     <a href="{{ url('/')}}" class="header item">
-        <img class="logo" src="images/logo/header.png" style="width: 150px">
+        <img class="logo" src="{{url('images/logo/header.png')}}" style="width: 150px">
     </a>
     <div class="right menu">
 
@@ -79,7 +79,7 @@
 <!-- movil-->
 <div class="ui fixed menu mobile only grid" style="padding-top: 0;">
         <a href="{{ url('/')}}" class="header item">
-            <img class="logo" src="images/logo/header.png" style="width: 150px">
+            <img class="logo" src="{{url('images/logo/header.png')}}" style="width: 150px">
         </a>
         <div class="right menu">
             <div class="item">
