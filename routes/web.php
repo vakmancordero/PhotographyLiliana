@@ -22,4 +22,4 @@ Route::post('admin/curriculum/create', 'CurriculumController@createCurriculum');
 
 // -> GET
 // Retorna el centro de carga para el curriculum seleccionado [ID]
-Route::get('admin/curriculum/cargar/{id}', 'CurriculumController@addCurriculumImages');
+Route::get('admin/curriculum/upload/{id}', 'CurriculumController@uploadImages');

@@ -34,12 +34,11 @@ class CurriculumController extends Controller {
         return back()->with('msj', 1);
     }
 
-    public function addCurriculumImages($id) {
+    public function uploadImages($id) {
     	
     	$curriculum = Curriculum::find($id);
     	
-        return view('admin/curriculum/charge')->with('curriculum', $curriculum);
-        
+        return view('admin/curriculum/upload')->with('curriculum', $curriculum);
     }
 
     public function something() {

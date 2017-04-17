@@ -21,19 +21,20 @@
             <div class="ui segment">
                 <h3 class="ui  floated header">{{ $curriculum->name }}</h3>
 
-                <a href="{{url('admin/curriculum/cargar/'. $curriculum->id)}}">
+                <a href="{{url('admin/curriculum/upload/' . $curriculum->id)}}">
                     <div class="ui right floated  header" tabindex="0">
                         <div class="ui red button">
                             <i class="trash icon"></i>
+                            Eliminar
                         </div>
-
                     </div>
                 </a>
 
-                <a href="{{url('admin/curriculum/cargar/'. $curriculum->id)}}">
+                <a href="{{url('admin/curriculum/upload/' . $curriculum->id)}}">
                     <div class="ui right floated labeled button" tabindex="0">
                         <div class="ui blue button">
-                            <i class="image icon"></i> Agregar Fotos
+                            <i class="image icon"></i>
+                            Cargar imágenes
                         </div>
                         <a class="ui basic blue left pointing label">
                             1,048

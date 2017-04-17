@@ -3,7 +3,7 @@
 @section('content')
 
     @if(Session::has('msj'))
-        <strong>Exito!</strong> Haz creado un nuevo curriculum
+        <strong>Exito!</strong> Haz creado un nuevo currículum
     @endif
 
     <h1>Curriculum - Crear un nuevo currículum</h1>
