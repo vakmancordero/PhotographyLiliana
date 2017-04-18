@@ -13,9 +13,13 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/principalAdministrador.css') }}">
-    {{--<link rel="stylesheet" type="text/css" href="{{ asset('toastr/toastr.min.css') }}">--}}
     <link rel="stylesheet" type="text/css" href="{{ asset('alertifyjs/css/alertify.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('alertifyjs/css/themes/default.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('gallery/css/blueimp-gallery.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('gallery/css/blueimp-gallery-indicator.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('gallery/css/blueimp-gallery-video.css') }}">
+
     @yield('stylesheets')
 
     <!-- Scripts -->
@@ -107,12 +111,19 @@
 </div>
 
 
+
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{{ asset('jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
-    {{--<script src="{{ asset('toastr/toastr.min.js') }}"></script>--}}
     <script src="{{ asset('alertifyjs/alertify.min.js') }}"></script>
     <script src="{{ asset('js/appAdmin/principalAdministrador.js') }}"></script>
+
+    <script src="{{ asset('gallery/js/blueimp-helper.js') }}"></script>
+    <script src="{{ asset('gallery/js/blueimp-gallery.js') }}"></script>
+    <script src="{{ asset('gallery/js/blueimp-gallery-fullscreen.js') }}"></script>
+    <script src="{{ asset('gallery/js/blueimp-gallery-indicator.js') }}"></script>
+    <script src="{{ asset('gallery/js/jquery.blueimp-gallery.js') }}"></script>
+
     @yield('script')
 
 </body>

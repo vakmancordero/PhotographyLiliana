@@ -32,3 +32,5 @@ Route::post('admin/curriculum/{id}/images', [
 	'as' => 'store_path',
 	'uses' => 'CurriculumController@addImage'
 ]);
+
+Route::get('admin/getImages', 'CurriculumController@getImages');

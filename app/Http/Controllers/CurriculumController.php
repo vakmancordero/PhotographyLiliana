@@ -83,5 +83,19 @@ class CurriculumController extends Controller {
             $curriculum->delete();
             return back();
     }
+
+    public function getImages(Request $request) {
+
+	    $method = $request->method;
+
+	    if ($method == 'inicio') {
+
+	        $idCurriculum =  $request->id;
+
+	        return CurriculumImage::where('curriculum_id', $idCurriculum)->get();
+
+        }
+
+    }
 	
 }
