@@ -24,7 +24,8 @@ $(function () {
                 var url = "..\\" + item.path;
 
                 $('<a/>')
-                    .append($('<img>').prop('src', url))
+                    .append($('<div>')).append($('<img>').prop('src', url))
+                    // .append($('<div>')).html("<img src='"+src+"'>")
                     .prop('href', url)
                     .prop('title', item.name)
                     .attr('data-gallery', '#blueimp-gallery-links_' + curriculumId)
@@ -32,28 +33,29 @@ $(function () {
 
             });
 
-            $('#blueimp-gallery')
-                .on('open', function (event) {
 
-                })
-                .on('opened', function (event) {
-
-                })
-                .on('slide', function (event, index, slide) {
-                    console.log("here" + index);
-                })
-                .on('slideend', function (event, index, slide) {
-                    // Gallery slideend event handler
-                })
-                .on('slidecomplete', function (event, index, slide) {
-                    // Gallery slidecomplete event handler
-                })
-                .on('close', function (event) {
-                    // Gallery close event handler
-                })
-                .on('closed', function (event) {
-                    // Gallery closed event handler
-                });
+            // $('#blueimp-gallery')
+            //     .on('open', function (event) {
+            //
+            //     })
+            //     .on('opened', function (event) {
+            //
+            //     })
+            //     .on('slide', function (event, index, slide) {
+            //         console.log("here" + index);
+            //     })
+            //     .on('slideend', function (event, index, slide) {
+            //         // Gallery slideend event handler
+            //     })
+            //     .on('slidecomplete', function (event, index, slide) {
+            //         // Gallery slidecomplete event handler
+            //     })
+            //     .on('close', function (event) {
+            //         // Gallery close event handler
+            //     })
+            //     .on('closed', function (event) {
+            //         // Gallery closed event handler
+            //     });
 
         });
     }

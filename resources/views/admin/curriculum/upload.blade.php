@@ -3,12 +3,10 @@
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/upload/imageUploader.js') }}"></script>
-    <script type="text/javascript" src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 @stop
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('dropzone/dropzone.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/photosFacebook.css') }}">
 @stop
 
 @section('content')

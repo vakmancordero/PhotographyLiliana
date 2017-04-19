@@ -40,10 +40,10 @@ class CurriculumImage extends Model {
 	}
 	
 	public function store(UploadedFile $file) {
-		
-		$file->move($this->baseDir, $this->name);
-		
-		return $this;
+
+        $file->move($this->baseDir, $this->name);
+
+        return $this;
 	}
 	
 	public function delete() {
@@ -53,5 +53,6 @@ class CurriculumImage extends Model {
 		]);
 		parent::delete();
 	}
-    
+
+
 }

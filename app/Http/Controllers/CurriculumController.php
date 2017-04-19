@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Curriculum;
 use App\CurriculumImage;
 use Illuminate\Http\Request;
-use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CurriculumController extends Controller {
@@ -46,15 +46,27 @@ class CurriculumController extends Controller {
 	public function addImage($id, Request $request) {
     	
 		$this->validate($request, [
-			'image' => 'required|mimes:jpg,jpeg,gif,png,bmp'
+			'image' => 'required|image'
 		]);
 		
 		$curriculum = Curriculum::getOne($id);
+
+//        $img = $request->file('image');
+//        $file_route = time().'_'. $img->getClientOriginalName();
+//
+//        $imagen1 =  Image::make($request->file('image'));
+//
+//        if( $imagen1->width() >= $imagen1->height()) {
+//            $imagen1->resize(1000, null);
+//            $imagen1->save($file_route);
+//            return 'true';
+//        }
+
 		
 		$img = $this->makeImage($request->file('image'));
-		
+
 		$curriculum->saveImage($img);
-		
+
 		return $img;
 	}
 	
