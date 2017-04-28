@@ -49,25 +49,43 @@ class CurriculumController extends Controller {
 			'image' => 'required|image'
 		]);
 		
-		$curriculum = Curriculum::getOne($id);
+//		$curriculum = Curriculum::getOne($id);
 
-//        $img = $request->file('image');
-//        $file_route = time().'_'. $img->getClientOriginalName();
-//
-//        $imagen1 =  Image::make($request->file('image'));
-//
-//        if( $imagen1->width() >= $imagen1->height()) {
-//            $imagen1->resize(1000, null);
-//            $imagen1->save($file_route);
-//            return 'true';
-//        }
+        $img = $request->file('image');
+
+        $file_route = time().'.'. $img->getClientOriginalExtension();
+
+        $imagen1 =  Image::make($request->file('image'));
+
+        if( $imagen1->width() >= $imagen1->height()) {
+            $imagen1->resize(1000, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save("prueba/" . $file_route);
+            return 'true';
+
+//                echo $file_route;
+                echo ' true';
+        }
+
+        else {
+            $imagen1->resize(null, 1000 , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save($file_route);
+            return 'true';
+        }
 
 		
-		$img = $this->makeImage($request->file('image'));
-
-		$curriculum->saveImage($img);
-
-		return $img;
+//		$img = $this->makeImage($request->file('image'));
+//
+//		$curriculum->saveImage($img);
+//
+//		return $img;
 	}
 	
 	private function makeImage(UploadedFile $file) {
