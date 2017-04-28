@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('stylesheets')
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/appAdmin/photosFacebook.css') }}">
 @stop
 
 @section('script')
     <script src="{{url('js/curriculum/index.js')}}"></script>
+    <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 @stop
 
 @section('content')
@@ -53,7 +55,7 @@
                 </a>
                 <div class="ui clearing divider"></div>
 
-                <div id="links_{{$curriculum->id}}"></div>
+                <div id="links_{{$curriculum->id}}" class="photoContainer"></div>
 
                 <div id="blueimp-gallery" class="blueimp-gallery">
                     <div class="slides"></div>
