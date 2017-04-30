@@ -21,12 +21,13 @@ $(function () {
 
             result.forEach(function (item, index) {
 
-                var url = "../" + item.path;
+                var url1 = "../images/aplication/curriculum/app/" + item.path;
+                var url2 = "../images/aplication/curriculum/computer/" + item.path;
 
                 $('<a/>')
                     // .append($('<div>')).append($('<img>').prop('src', url))
-                    .append($('<div>').prop({"style" : "background-image: url(" + url + ");" , 'id' : 'photos'}))
-                    .prop('href', url)
+                    .append($('<div>').prop({"style" : "background-image: url(" + url1 + ");" , 'id' : 'photos'}))
+                    .prop('href', url2)
                     .prop('title', item.name)
                     .attr('data-gallery', '#blueimp-gallery-links_' + curriculumId)
                     .appendTo($("#links_" + curriculumId));

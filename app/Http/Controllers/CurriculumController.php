@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Curriculum;
 use App\CurriculumImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -58,29 +59,68 @@ class CurriculumController extends Controller {
         $imagen1 =  Image::make($request->file('image'));
 
         if( $imagen1->width() >= $imagen1->height()) {
-            $imagen1->resize(1000, null , function ($constraint) {
+            $imagen1->resize(1500, null , function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
 
-            $imagen1->save("prueba/" . $file_route);
-            return 'true';
+            $imagen1->save(directories::getCurriculumPath().'computer/' . $file_route);
 
-//                echo $file_route;
-                echo ' true';
+            $imagen1->resize(800, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save(directories::getCurriculumPath().'tablet/' . $file_route);
+
+            $imagen1->resize(500, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save(directories::getCurriculumPath().'mov/' . $file_route);
+
+            $imagen1->fit(150, 150);
+            $imagen1->save(directories::getCurriculumPath().'app/' . $file_route);
         }
 
         else {
-            $imagen1->resize(null, 1000 , function ($constraint) {
+            $imagen1->resize(null, 1500 , function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
 
-            $imagen1->save($file_route);
-            return 'true';
+            $imagen1->save(directories::getCurriculumPath().'computer/' . $file_route);
+
+            $imagen1->resize(null, 800 , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save(directories::getCurriculumPath().'tablet/' . $file_route);
+
+            $imagen1->resize(null, 500 , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $imagen1->save(directories::getCurriculumPath().'mov/' . $file_route);
+
+            $imagen1->fit(150, 150);
+            $imagen1->save(directories::getCurriculumPath().'app/' . $file_route);
+
+
         }
 
-		
+        $img = new CurriculumImage();
+        $img->curriculum_id = $id;
+        $img->name = $file_route;
+        $img->path = $file_route;
+        $img->save();
+
+
+        return 'true';
+
 //		$img = $this->makeImage($request->file('image'));
 //
 //		$curriculum->saveImage($img);
@@ -127,5 +167,14 @@ class CurriculumController extends Controller {
         }
 
     }
+
+    public function test() {
+
+
+//	    $path = new directories();
+////	    return $path->imagesAplicationPath;
+        return  directories::getCurriculumPath();
+    }
+
 	
 }

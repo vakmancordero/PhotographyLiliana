@@ -34,3 +34,5 @@ Route::post('admin/curriculum/{id}/images', [
 ]);
 
 Route::get('admin/getImages', 'CurriculumController@getImages');
+
+Route::get('admin/test', 'CurriculumController@test');
