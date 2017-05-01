@@ -6,6 +6,7 @@ use App\Curriculum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class CurriculumImage extends Model {
@@ -47,10 +48,11 @@ class CurriculumImage extends Model {
 	}
 	
 	public function delete() {
-		
-		File::delete([
-			$this->path,
-		]);
+        Storage::disk('curriculum')->delete('app/'.$this->path);
+        Storage::disk('curriculum')->delete('computer/'.$this->path);
+        Storage::disk('curriculum')->delete('mov/'.$this->path);
+        Storage::disk('curriculum')->delete('tablet/'.$this->path);
+
 		parent::delete();
 	}
 

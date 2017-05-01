@@ -49,8 +49,6 @@ class CurriculumController extends Controller {
 		$this->validate($request, [
 			'image' => 'required|image'
 		]);
-		
-//		$curriculum = Curriculum::getOne($id);
 
         $img = $request->file('image');
 
@@ -118,13 +116,11 @@ class CurriculumController extends Controller {
         $img->path = $file_route;
         $img->save();
 
-
         return 'true';
 
+//		$curriculum = Curriculum::getOne($id);
 //		$img = $this->makeImage($request->file('image'));
-//
 //		$curriculum->saveImage($img);
-//
 //		return $img;
 	}
 	
@@ -150,8 +146,8 @@ class CurriculumController extends Controller {
 
         }
 
-            $curriculum->delete();
-            return back();
+        $curriculum->delete();
+        return back();
     }
 
     public function getImages(Request $request) {

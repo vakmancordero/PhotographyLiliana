@@ -53,10 +53,16 @@ return [
             'root' => public_path('images/aplication/curriculum'),
         ],
 
+        'prueba' =>[
+            'driver' => 'local',
+            'root' => public_path('prueba'),
+        ],
+
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
