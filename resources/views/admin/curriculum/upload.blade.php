@@ -38,7 +38,7 @@
     <input type="hidden" value="{{url('/')}}" id="homePath">
 
     <div id="links" class="photoContainer">
-        @foreach()
+
     </div>
 
     <div id="blueimp-gallery" class="blueimp-gallery">

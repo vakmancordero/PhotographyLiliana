@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/', function () {
-    return view('visitor/index');
-});
+Route::get('/', 'VisitorController@index');
+
+Route::get('portafolio/{id}', 'VisitorController@curriculum' );
 
 Auth::routes();
 

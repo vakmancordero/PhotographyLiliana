@@ -131,8 +131,7 @@ class CurriculumController extends Controller {
 	public function destroyImage($id) {
     	
 		CurriculumImage::findOrFail($id)->delete();
-		
-		return back();
+		return 'true';
 	}
 
 	public function destroyCurriculum($id){

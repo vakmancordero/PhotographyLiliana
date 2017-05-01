@@ -22,9 +22,31 @@
     height: 130px;
 }
 
-.photos:hover{
-    cursor: pointer;
-    opacity: .85;
+#linkElement:hover {
+    opacity: .7;
+    cursor: -webkit-zoom-in;
+    cursor: -moz-zoom-in;;
+}
+
+#linkElement:hover i{
+
+    opacity: .7;
+}
+
+.trash.icon {
+    opacity: .0;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    position: relative;
+    right: 0;
+}
+
+
+
+.trash:hover {
+    opacity: 1;
+    cursor: help;
 }
 
 
@@ -45,8 +67,6 @@
         width: 33.33%;
         height: 65px;
     }
-    .photoHover i {
-        display: none;
-    }
+
 }
 

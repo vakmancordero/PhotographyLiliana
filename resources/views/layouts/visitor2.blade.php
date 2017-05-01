@@ -26,29 +26,29 @@
 </head>
 <body>
 
-    <div class="ui fixed menu" style="background:white;">
-        <div class="ui container" style="color: #000">
-            <a href="{{ url('/')}}" class="header item">
-                <!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
-                <img class="logo" src="images/logo/header.png" style="width: 150px">
-            </a>
+<div class="ui fixed menu" style="background:white;">
+    <div class="ui container" style="color: #000">
+        <a href="{{ url('/')}}" class="header item">
+            <!--                <img class="logo" src="https://semantic-ui.com/examples/assets/images/logo.png">-->
+            <img class="logo" src="{{url("images/logo/header.png")}}" style="width: 150px">
+        </a>
 
-            <div class="right item" style="padding: 0px;">
-                <a href="#" class="item">Inicio</a>
-                <div class="ui simple dropdown item">
-                    Portafolio <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="#">XV</a>
-                        <a class="item" href="#">Bodas</a>
-                        <a class="item" href="#">Especiales</a>
-                    </div>
+        <div class="right item" style="padding: 0px;">
+            <a href="#" class="item">Inicio</a>
+            <div class="ui simple dropdown item">
+                Portafolio <i class="dropdown icon"></i>
+                <div class="menu">
+                    @foreach($curriculum as $n)
+                        <a class="item" href="{{url('portafolio/' . $n->id)}}">{{$n->name}}</a>
+                    @endforeach
                 </div>
-                <a href="#" class="item">Blog</a>
-                <a href="#" class="item">Contacto</a>
-                <a href="{{url('login')}}" class="item">Login</a>
             </div>
+            <a href="#" class="item">Blog</a>
+            <a href="#" class="item">Contacto</a>
+            <a href="{{url('login')}}" class="item">Login</a>
         </div>
     </div>
+</div>
 
     @yield('content')
 
