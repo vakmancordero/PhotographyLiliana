@@ -3,6 +3,7 @@
 Route::get('/', 'VisitorController@index');
 
 Route::get('portafolio/{id}', 'VisitorController@curriculum' );
+Route::get('portafolio/fotos/{id}', 'VisitorController@curriculumPhotos' );
 
 Auth::routes();
 
