@@ -9,25 +9,13 @@
 @stop
 
 @section('javascript')
+    <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4.2.0/dist/masonry.pkgd.min.js"></script>
     <script src="{{ asset('gallery/js/blueimp-helper.js') }}"></script>
     <script src="{{ asset('gallery/js/blueimp-gallery.js') }}"></script>
     <script src="{{ asset('gallery/js/blueimp-gallery-fullscreen.js') }}"></script>
     <script src="{{ asset('gallery/js/blueimp-gallery-indicator.js') }}"></script>
     <script src="{{ asset('gallery/js/jquery.blueimp-gallery.js') }}"></script>
-
-    <script src="https://unpkg.com/masonry-layout@4.2.0/dist/masonry.pkgd.min.js"></script>
-
-    <script>
-
-        var elem = document.querySelector('.photoContainer');
-        var msnry = new Masonry( elem, {
-
-            itemSelector: '.pint',
-            horizontalOrder: true
-
-        });
-    </script>
-
     <script src="{{ asset('js/visitor/curriculum.js') }}"></script>
 @stop
 
@@ -77,11 +65,11 @@
         <input type="hidden" value="{{url('/')}}" id="homePath">
 
         <div id="links" class="photoContainer">
-            @foreach($images as $n)
+            {{--@foreach($images as $n)--}}
                 {{--<a class="pint" href="{{url('images/aplication/curriculum/computer/'.$n->path)}}" title="Bodas" data-gallery='#blueimp-gallery-links'>--}}
                     {{--<img src="{{url('images/aplication/curriculum/mov/'.$n->path)}}" width="100%">--}}
                 {{--</a>--}}
-            @endforeach
+            {{--@endforeach--}}
         </div>
 
         <div id="blueimp-gallery" class="blueimp-gallery">
