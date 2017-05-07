@@ -11,5 +11,7 @@ class BlogImage extends Model
     protected $fillable = [
         'blog_id', 'path', 'order'
     ];
-}
+
+    public $timestamps = false;
+
 }

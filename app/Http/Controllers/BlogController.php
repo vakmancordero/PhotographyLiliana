@@ -73,6 +73,63 @@ class BlogController extends Controller
         }
     }
 
+    public function uploadView($id) {
+        $blog = Blog::find($id);
+
+        return view('admin/blog/upload')->with(['blog' => $blog, 'id' => $id ]);
+    }
+
+    public function uploadPhotos($id, Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|image'
+        ]);
+
+        $img = $request->file('image');
+
+        $file_route = time().'.'. $img->getClientOriginalExtension();
+
+        $img =  Image::make($request->file('image'));
+
+
+
+        if( $img->width() >= $img->height()) {
+            $img->resize(1500, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $img->save(directories::getBlogPath().'computer/' . $file_route);
+
+            $img->resize(800, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $img->save(directories::getBlogPath().'tablet/' . $file_route);
+
+            $img->resize(500, null , function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+
+            $img->save(directories::getBlogPath().'mov/' . $file_route);
+
+            $img->fit(150, 150);
+            $img->save(directories::getBlogPath().'app/' . $file_route);
+        } else {
+            return false;
+        }
+
+        $imagen = new BlogImage;
+
+        $imagen->path= $file_route;
+        $imagen->blog_id = $id;
+        $imagen->save();
+
+        return $file_route;
+    }
+
     public function test(){
         $blog = Blog::select('id')->latest()->first();
         return redirect('admin/blog/upload/' . $blog->id);
