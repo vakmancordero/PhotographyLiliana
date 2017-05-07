@@ -1,4 +1,4 @@
-@extends('layouts.visitor2')
+@extends('layouts.visitor3')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
@@ -22,10 +22,18 @@
 @section('content')
 
 <style>
+
+    #landing {
+        -moz-background-size: cover;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+    }
     .pint{
         width: 33.33333%;
-        background: #fff2f2;
+
         float: left;  height: auto;
+        padding:5px;
 
     }
     .pint img {
@@ -53,11 +61,23 @@
         background: #F2F2F2;
     }
 
+    @media screen and (max-width: 1000px) {
+        #albumContent {
+            width: 100vw;
+        }
+
+    }
+    @media screen and (max-width: 600px) {
+        .pint {
+            width: 50%;
+        }
+    }
+
 
 </style>
 
-    <img src="{{url('images/aplication/curriculum/computer/' . $images[0]->path)}}" width="100%">
-    <div id="albumContent" style="margin: 0 auto; width: 75%">
+<div style=" background-image: url('{{url('images/aplication/curriculum/computer/' . $images[0]->path)}}')" id="landing"></div>
+    <div id="albumContent">
         <h1>{{$curriculumActual->name}}</h1>
         <p>{{ $curriculumActual->description }}</p>
 

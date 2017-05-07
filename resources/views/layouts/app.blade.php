@@ -36,20 +36,20 @@
 <!-- Sidebar Menu Computer -->
 <div style="position: relative">
     <div class="ui  vertical visible inverted sidebar menu" id="idMenu">
-        <a href="{{url('home')}}"><img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block"></a>
+        <a href="{{url('admin')}}"><img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block"></a>
         <a class="item" href="{{url('admin/curriculum')}}">Curriculum</a>
-        <a class="item">Blog</a>
+        <a class="item" href="{{url('admin/blog')}}">Blog</a>
         <a class="item">Clientes</a>
         <a class="item">Careers</a>
         <a class="item">Login</a>
         <a class="item">Signup</a>
-        <a href="{{ route('logout') }}" class="item"
+        <a href="{{ url('logout') }}" class="item"
            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
             Cerrar Sesión
         </a>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
             {{ csrf_field() }}
         </form>
         <br><br>
@@ -67,13 +67,13 @@
     <div class="right menu">
 
         <div class="item">
-            <a href="{{ route('logout') }}" class="ui primary button  "
+            <a href="{{ url('logout') }}" class="ui primary button  "
                onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                 Cerrar Sesión
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>
         </div>

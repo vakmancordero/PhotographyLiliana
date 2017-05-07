@@ -4,11 +4,13 @@ html, body, #fullheight {
 }
 #slider-container {
     width: 100%;
+    height: 100vh;
     margin: 0 auto;
-    background-color: #9BA2AB;
+
     display: block; 
     overflow: hidden;
     position: relative;
+    z-index: 1;
     
 }
 
@@ -30,22 +32,22 @@ html, body, #fullheight {
 
  
 #leftSlider { 
-    position: absolute;
-    top:48%;
+
     left: 18px;                                         
 }
 #rightSlider { 
-    position: absolute;
-    top:48%;
+
     right: 18px;                                        
 }
 
-.directions { 
-    z-index: 10;
+.directions {
+    position: absolute;
+    z-index: 2;
     cursor: pointer;     
     text-shadow: 2px 2px 3px black;
     font-size: 60px;
     color: white;
+    margin:0;
     
     
     padding:  5px 10px 5px 10px;
@@ -64,3 +66,8 @@ html, body, #fullheight {
     border: 3px solid white;
     background-color: rgba(0,0,0,.1);
 }
+
+/*#directionContainer {*/
+    /*background-color: #00B5AD;*/
+    /*width: auto;*/
+/*}*/

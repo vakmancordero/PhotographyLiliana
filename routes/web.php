@@ -4,11 +4,15 @@ Route::get('/', 'VisitorController@index');
 
 Route::get('portafolio/{id}', 'VisitorController@curriculum' );
 Route::get('portafolio/fotos/{id}', 'VisitorController@curriculumPhotos' );
+Route::get('login' , 'VisitorController@login');
 
-Auth::routes();
+Route::post('login', 'AuthController@login');
+Route::get('/admin', 'AuthController@auth');
+Route::post('/logout', 'AuthController@logout');
+//Auth::routes();
 
 // Vista principal
-Route::get('/home', 'HomeController@index');
+
 
 // Lista los curriculums existentes.
 Route::get('admin/curriculum', 'CurriculumController@index');
@@ -35,4 +39,11 @@ Route::post('admin/curriculum/{id}/images', [
 ]);
 
 Route::get('admin/getImages', 'CurriculumController@getImages');
+
+
+
+//Blog
+Route::get('admin/blog' , 'BlogController@index');
+Route::get('admin/blog/create' , 'BlogController@create');
+Route::post('admin/blog/create' , 'BlogController@store');
 

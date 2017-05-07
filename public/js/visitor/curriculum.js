@@ -38,14 +38,14 @@ $(function () {
             }
 
             items.push($('<a/>')
-                .append($('<img>')
-                    .prop({"src" : url1 }))
-                .prop('href', url2)
-                .prop('title', item.name)
-                .prop('class', 'pint')
-                .attr('data-gallery', '#blueimp-gallery-links')
-                .appendTo($("#links"))
-            );
+                        .append($('<img>')
+                            .prop({"src" : url1 }))
+                        .prop('href', url2)
+                        .prop('title', item.name)
+                        .prop('class', 'pint')
+                        .attr('data-gallery', '#blueimp-gallery-links')
+                        .appendTo($("#links"))
+                );
 
         });
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Curriculum;
 use App\CurriculumImage;
+use Illuminate\Support\Facades\Auth;
+
 
 class VisitorController extends Controller
 {
@@ -24,5 +26,16 @@ class VisitorController extends Controller
     public function curriculumPhotos($id){
         $photos = CurriculumImage::where('curriculum_id', $id)->get();
         return $photos;
+    }
+
+    public function login(){
+
+
+        if(Auth::check()) {
+            return redirect('admin');
+        } else {
+            $curriculum = Curriculum::select('id', 'name')->get();
+            return view('visitor/login')->with('curriculum', $curriculum);
+        }
     }
 }

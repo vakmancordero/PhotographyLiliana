@@ -1,13 +1,21 @@
-@extends('layouts.visitor')
+@extends('layouts.visitor3')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/slider.css') }}">
 @stop
 
+@section('javascript')
+    <script src="{{asset('js/visitor/sliderIndex.js')}}"></script>
+@stop
+
 @section('content')
-    <h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
-    <h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
+    <div id="directionContainer">
+        <h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
+    </div>
+    <div id="directionContainer">
+        <h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
+    </div>
     <div id="slider-container">
         <div>
             <img src="images/sliderIndex/1.jpg">
@@ -64,6 +72,3 @@
 @stop
 
 
-@section('javascript')
-    <script src="{{asset('js/sliderIndex.js')}}"></script>
-@stop
