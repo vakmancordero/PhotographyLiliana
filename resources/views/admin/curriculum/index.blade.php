@@ -17,7 +17,7 @@
         </button>
     </a>
 
-    <h1>Panel de control - Curriculum</h1>
+    <h1 style="margin-top: 0">Panel de control - Curriculum</h1>
 
     @if(isset($curriculums))
 

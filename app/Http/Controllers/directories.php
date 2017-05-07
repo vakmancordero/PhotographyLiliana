@@ -23,4 +23,8 @@ class directories
     public static function getCurriculumPath() {
         return self::$imagesAplicationPath . 'curriculum/';
     }
+
+    public static function getBlogPath() {
+        return self::$imagesAplicationPath . 'blog/';
+    }
 }

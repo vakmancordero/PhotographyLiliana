@@ -27,14 +27,20 @@ class CurriculumController extends Controller {
 
     public function createCurriculum(Request $request) {
 
-        $curriculum = new Curriculum();
-        
+        $this->validate($request, [
+            'description' => 'required',
+            'name' => 'required|max:100|unique:curriculum',
+        ]);
+
+        $curriculum = new Curriculum;
+
         $curriculum->name = $request->name;
         $curriculum->description = $request->description;
-        
+
         $curriculum->save();
 
-        return back()->with('msj', 1);
+        $curriculum = Curriculum::select('id')->orderBy('id', 'desc')->first();
+        return redirect('admin/curriculum/upload/' . $curriculum->id);
     }
 
     public function uploadImages($id) {

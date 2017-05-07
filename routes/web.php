@@ -46,6 +46,7 @@ Route::get('admin/getImages', 'CurriculumController@getImages');
 Route::get('admin/blog' , 'BlogController@index');
 Route::get('admin/blog/create' , 'BlogController@create');
 Route::post('admin/blog/create' , 'BlogController@store');
+Route::get('admin/blog/test' , 'BlogController@test');
 
 //Register
 Route::get('admin/register' , 'AuthController@getRegister');
