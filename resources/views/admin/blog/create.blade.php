@@ -26,8 +26,8 @@
                 </span>
             @endif
 
-            <label>Escribe tu historia: </label>
-            <input name="imagen" type="image">
+            <label>Imagen: </label>
+            <input name="imagen" type="file" class="ui button" accept="image/jpeg, image/png">
 
         </div>
 

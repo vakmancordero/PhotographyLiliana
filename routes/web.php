@@ -47,3 +47,6 @@ Route::get('admin/blog' , 'BlogController@index');
 Route::get('admin/blog/create' , 'BlogController@create');
 Route::post('admin/blog/create' , 'BlogController@store');
 
+//Register
+Route::get('admin/register' , 'AuthController@getRegister');
+Route::post('admin/register' , 'AuthController@postRegister');

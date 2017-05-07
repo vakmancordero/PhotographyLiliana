@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Blog;
+use App\BlogImage;
 class BlogController extends Controller
 {
     public function index(){
@@ -18,5 +19,8 @@ class BlogController extends Controller
     {
         $historia = $request->historia;
         $titulo = $request->titulo;
+
+
+        $blog = new Blog;
     }
 }
