@@ -2,9 +2,11 @@
 
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/upload/imageUploader.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/CurriculumUploadImages.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/CurriculumDeleteImage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/CurriculumUploadGetImages.js') }}"></script>
     <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
-    <script src="{{url('js/curriculum/upload.js')}}"></script>
+
 @stop
 
 @section('stylesheets')

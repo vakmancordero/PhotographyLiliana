@@ -2,7 +2,7 @@
 Dropzone.options.addImagesForm = {
 
     paramName: 'image',
-    maxFilesize: 3,
+    maxFilesize: 15,
     acceptedFiles: '.jpg, .jpeg, .gif, .png, .bmp',
     addRemoveLinks: true,
     success: function(file, response){

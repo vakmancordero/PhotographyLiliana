@@ -2,9 +2,11 @@
 
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url('js/appAdmin/uploadBlogImage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/uploadBlogStoreImage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/uploadBlogGetImage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/uploadBlogDeleteImage.js') }}"></script>
     <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
-    <script src="{{url('js/curriculum/upload.js')}}"></script>
+
 @stop
 
 @section('stylesheets')
@@ -26,7 +28,8 @@
     </form>
 
     <br>
-    <input type="hidden" value="{{$id}}" id="curriculumId">
+    <input type="hidden" value="{{$blog->name}}" id="blogName">
+    <input type="hidden" value="{{$id}}" id="blogId">
     <input type="hidden" value="{{url('/')}}" id="homePath">
 
     <div id="links" class="photoContainer">

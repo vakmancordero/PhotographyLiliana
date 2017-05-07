@@ -32,31 +32,8 @@ $(function () {
                     .appendTo($("#links_" + curriculumId));
 
             });
-
-
-            // $('#blueimp-gallery')
-            //     .on('open', function (event) {
-            //
-            //     })
-            //     .on('opened', function (event) {
-            //
-            //     })
-            //     .on('slide', function (event, index, slide) {
-            //         console.log("here" + index);
-            //     })
-            //     .on('slideend', function (event, index, slide) {
-            //         // Gallery slideend event handler
-            //     })
-            //     .on('slidecomplete', function (event, index, slide) {
-            //         // Gallery slidecomplete event handler
-            //     })
-            //     .on('close', function (event) {
-            //         // Gallery close event handler
-            //     })
-            //     .on('closed', function (event) {
-            //         // Gallery closed event handler
-            //     });
-
+         phothosWidth();
         });
     }
 });
+

@@ -5,7 +5,7 @@
 @stop
 
 @section('script')
-    <script src="{{url('js/curriculum/index.js')}}"></script>
+    <script src="{{url('js/appAdmin/CurriculumIndexGetImages.js')}}"></script>
     <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 @stop
 

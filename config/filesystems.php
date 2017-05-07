@@ -53,6 +53,11 @@ return [
             'root' => public_path('images/aplication/curriculum'),
         ],
 
+        'blog' =>[
+            'driver' => 'local',
+            'root' => public_path('images/aplication/blog'),
+        ],
+
         'prueba' =>[
             'driver' => 'local',
             'root' => public_path('prueba'),

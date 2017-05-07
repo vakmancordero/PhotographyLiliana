@@ -40,9 +40,6 @@
         <a class="item" href="{{url('admin/curriculum')}}">Curriculum</a>
         <a class="item" href="{{url('admin/blog')}}">Blog</a>
         <a class="item" href="{{url('admin/register')}}">Clientes</a>
-        <a class="item">Careers</a>
-        <a class="item">Login</a>
-        <a class="item">Signup</a>
         <a href="{{ url('logout') }}" class="item"
            onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

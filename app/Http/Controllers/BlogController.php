@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\CurriculumImage;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\BlogImage;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\directories;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
     public function index(){
-        return view('admin/blog/index');
+        $blogs = Blog::latest()->get()->paginate(15);
+        return view('admin/blog/index')->with('blog', $blogs);
     }
 
     public function create(){
@@ -130,6 +133,24 @@ class BlogController extends Controller
         return $file_route;
 
     }
+
+    public function uploadGetImages($id) {
+        return BlogImage::where('blog_id' , $id)->get();
+    }
+
+    public function uploadDeleteImage($id){
+        $imagen = BlogImage::find($id);
+
+        Storage::disk('blog')->delete('app/'.$imagen->path);
+        Storage::disk('blog')->delete('computer/'.$imagen->path);
+        Storage::disk('blog')->delete('mov/'.$imagen->path);
+        Storage::disk('blog')->delete('tablet/'.$imagen->path);
+
+        $imagen->delete();
+
+        return $id;
+    }
+
 
     public function test(){
         $blog = Blog::select('id')->latest()->first();

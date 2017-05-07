@@ -48,6 +48,8 @@ Route::get('admin/blog/create' , 'BlogController@create');
 Route::post('admin/blog/create' , 'BlogController@store');
 Route::get('admin/blog/upload/{id}' , 'BlogController@uploadView');
 Route::post('admin/blog/upload/{id}' , 'BlogController@uploadPhotos');
+Route::get('admin/blog/upload/getImages/{id}' , 'BlogController@uploadGetImages');
+Route::get('admin/blog/upload/deleteImage/{id}', 'BlogController@uploadDeleteImage');
 Route::get('admin/blog/test' , 'BlogController@test');
 
 //Register
