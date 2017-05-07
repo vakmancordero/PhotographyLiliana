@@ -128,6 +128,7 @@ class BlogController extends Controller
         $imagen->save();
 
         return $file_route;
+
     }
 
     public function test(){

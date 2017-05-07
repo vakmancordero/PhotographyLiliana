@@ -2,7 +2,7 @@
 
 @section('script')
     <script type="text/javascript" src="{{ asset('dropzone/dropzone.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/appAdmin/uploadBlogImage.js') }}"></script>
+    <script type="text/javascript" src="{{ url('js/appAdmin/uploadBlogImage.js') }}"></script>
     <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
     <script src="{{url('js/curriculum/upload.js')}}"></script>
 @stop

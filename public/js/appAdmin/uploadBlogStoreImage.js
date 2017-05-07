@@ -1,4 +1,3 @@
-
 Dropzone.options.addImagesForm = {
 
     paramName: 'image',
