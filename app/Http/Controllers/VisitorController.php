@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Auth;
 class VisitorController extends Controller
 {
     public  function index(){
-        $curriculum = Curriculum::all();
-        return view('visitor/index')->with('curriculum', $curriculum);
+        $curriculum = Curriculum::select('id' , 'name')->get();
+        $blogs =  Blog::orderBy('date', 'desc')
+                ->paginate(3);
+
+        foreach($blogs as $n){
+            $n->link = str_replace(' ', '-', $n->name);
+            $n->date = str_replace('-', ' . ', $n->date);
+        }
+        return view('visitor/index')->with(['curriculum' => $curriculum, 'blogs' => $blogs]);
     }
     public function curriculum($id){
 
@@ -45,5 +52,18 @@ class VisitorController extends Controller
     public function indexBlog($id){
         $blog =  Blog::find($id);
         return view('visitor/blogShow')->with(['blog' => $blog]);
+    }
+
+    public function blog($name){
+        $name = str_replace('-', ' ', $name);
+
+        $blog = Blog::where('name', $name)->first();
+        $curriculum = Curriculum::select('id', 'name')->get();
+        return view('visitor/blog')->with(['blog'=> $blog, 'curriculum' =>$curriculum]);
+    }
+
+    public function blogGetGallery($id){
+        $gallery = BlogImage::where('blog_id' , $id)->get();
+        return $gallery;
     }
 }

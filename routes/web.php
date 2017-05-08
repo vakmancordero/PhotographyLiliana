@@ -5,7 +5,9 @@ Route::get('/', 'VisitorController@index');
 Route::get('portafolio/{id}', 'VisitorController@curriculum' );
 Route::get('portafolio/fotos/{id}', 'VisitorController@curriculumPhotos' );
 
-Route::get('blog/{id}', 'VisitorController@indexBlog' );
+Route::get('blog', 'VisitorController@indexBlog' );
+Route::get('blog/{name}', 'VisitorController@blog' );
+Route::get('blogGallery/{id}', 'VisitorController@blogGetGallery' );
 Route::get('login' , 'VisitorController@login');
 
 Route::post('login', 'AuthController@login');

@@ -1,0 +1,43 @@
+#landing {
+    -moz-background-size: cover;
+    background-size: cover ;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+#blogContent{
+    width: 75%;
+    max-width: 1200px;
+
+    background: white;
+    padding: 25px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    margin:0 auto;
+}
+
+.photoContainer img {
+    width: 100%;
+}
+
+body{
+    background: #F2F2F2;
+}
+
+@media screen and (max-width: 1000px) {
+    #albumContent {
+        width: 100vw;
+    }
+
+}
+@media screen and (max-width: 600px) {
+    .pint {
+        width: 50%;
+    }
+}

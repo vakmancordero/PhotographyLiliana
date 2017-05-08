@@ -197,29 +197,26 @@ class BlogController extends Controller
     }
 
     public function uploadDeleteImage($id){
-        $imagen = BlogImage::find($id);
 
-        Storage::disk('blog')->delete('app/'.$imagen->path);
-        Storage::disk('blog')->delete('computer/'.$imagen->path);
-        Storage::disk('blog')->delete('mov/'.$imagen->path);
-        Storage::disk('blog')->delete('tablet/'.$imagen->path);
-
-        $imagen->delete();
+        $this->destroyImage(
+            BlogImage::find($id)
+        );
 
         return $id;
     }
 
     public function destroyBlog($id) {
+
         $blog = Blog::find($id);
+
         if($blog->gallery == 1){
+
             $gallery = BlogImage::where('blog_id', $id)->get();
-            foreach($gallery as $img){
-                Storage::disk('blog')->delete('app/'.$img->path);
-                Storage::disk('blog')->delete('computer/'.$img->path);
-                Storage::disk('blog')->delete('mov/'.$img->path);
-                Storage::disk('blog')->delete('tablet/'.$img->path);
-                $img->delete();
+
+            foreach($gallery as $img) {
+                $this->destroyImage($img);
             }
+
         }
 
         Storage::disk('blog')->delete($blog->image);
@@ -227,6 +224,16 @@ class BlogController extends Controller
         $blog->delete();
 
         return back()->with('msj','Blog Eliminado');
+    }
+
+    public function destroyImage($img) {
+
+        Storage::disk('blog')->delete('app/'.$img->path);
+        Storage::disk('blog')->delete('computer/'.$img->path);
+        Storage::disk('blog')->delete('mov/'.$img->path);
+        Storage::disk('blog')->delete('tablet/'.$img->path);
+        $img->delete();
+
     }
 
 
