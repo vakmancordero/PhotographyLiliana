@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Storage;
 class BlogController extends Controller
 {
     public function index(){
-        $blogs = Blog::latest()->get()->paginate(15);
-        return view('admin/blog/index')->with('blog', $blogs);
+        $blogs = Blog::latest()->paginate(15);
+        return view('admin/blog/index')->with('blogs', $blogs);
     }
 
     public function create(){
@@ -74,6 +74,64 @@ class BlogController extends Controller
         } else {
             return back()->with('msj', true);
         }
+    }
+
+    public function edit($id) {
+            $blog = Blog::find($id);
+
+            $text = $blog->description;
+            $breaks = array("<br />","<br>","<br/>");
+            $text = str_ireplace($breaks, "\r\n", $text);
+            $blog->description = $text;
+
+            return view('admin/blog/edit')->with('blog', $blog);
+    }
+
+    public function update($id, Request $request)
+    {
+        $this->validate($request, [
+            'historia' => 'required',
+            'name' => 'required|max:100',
+            'date' => 'required'
+        ]);
+
+        $blog = Blog::find($id);
+
+        $texto = $request->historia;
+        $texto = rawurlencode($texto);
+        $texto = rawurldecode(str_replace("%0D%0A", "<br>", $texto));
+
+        if ($request->imagen) {
+            $img = $request->file('imagen');
+            $path = time() . '.' . $img->getClientOriginalExtension();
+            $img = Image::make($img);
+
+            if ($img->width() >= $img->height()) {
+                $img->resize(1500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                Storage::disk('blog')->delete($blog->image);
+                $img->save(directories::getBlogPath() . $path);
+
+                $blog->image = $path;
+            } else {
+                return back()->withInput();
+            }
+        }
+
+        $blog->name = $request->name;
+        $blog->description = $texto;
+        $blog->date = $request->date;
+
+        if ($request->galeria == "on"){
+            $blog->gallery = 1;
+        } else {
+            $blog->gallery = NULL;
+        }
+        $blog->save();
+
+        return back()->with('msj', true);
     }
 
     public function uploadView($id) {
@@ -149,6 +207,26 @@ class BlogController extends Controller
         $imagen->delete();
 
         return $id;
+    }
+
+    public function destroyBlog($id) {
+        $blog = Blog::find($id);
+        if($blog->gallery == 1){
+            $gallery = BlogImage::where('blog_id', $id)->get();
+            foreach($gallery as $img){
+                Storage::disk('blog')->delete('app/'.$img->path);
+                Storage::disk('blog')->delete('computer/'.$img->path);
+                Storage::disk('blog')->delete('mov/'.$img->path);
+                Storage::disk('blog')->delete('tablet/'.$img->path);
+                $img->delete();
+            }
+        }
+
+        Storage::disk('blog')->delete($blog->image);
+
+        $blog->delete();
+
+        return back()->with('msj','Blog Eliminado');
     }
 
 

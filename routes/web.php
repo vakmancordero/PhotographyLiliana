@@ -46,10 +46,13 @@ Route::get('admin/getImages', 'CurriculumController@getImages');
 Route::get('admin/blog' , 'BlogController@index');
 Route::get('admin/blog/create' , 'BlogController@create');
 Route::post('admin/blog/create' , 'BlogController@store');
+Route::get('admin/blog/modificar/{id}', 'BlogController@edit');
+Route::post('admin/blog/modificar/{id}', 'BlogController@update');
 Route::get('admin/blog/upload/{id}' , 'BlogController@uploadView');
 Route::post('admin/blog/upload/{id}' , 'BlogController@uploadPhotos');
 Route::get('admin/blog/upload/getImages/{id}' , 'BlogController@uploadGetImages');
 Route::get('admin/blog/upload/deleteImage/{id}', 'BlogController@uploadDeleteImage');
+Route::get('admin/blog/destroy/{id}', 'BlogController@destroyBlog');
 Route::get('admin/blog/test' , 'BlogController@test');
 
 //Register
