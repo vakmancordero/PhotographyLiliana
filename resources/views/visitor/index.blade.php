@@ -11,10 +11,10 @@
 
 @section('content')
     <div id="directionContainer">
-        <h3 id="leftSlider" class="directions" onclick="sliderBefore()"><</h3>
+        <h3 id="leftSlider" class="directions" onclick="sliderBefore()"><i class="angle left icon"></i></h3>
     </div>
     <div id="directionContainer">
-        <h3 id="rightSlider" class="directions" onclick="sliderNext()">></h3>
+        <h3 id="rightSlider" class="directions" onclick="sliderNext()"><i class="angle right icon"></i></h3>
     </div>
     <div id="slider-container">
         <div>

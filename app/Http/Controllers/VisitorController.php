@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Curriculum;
 use App\CurriculumImage;
+use App\Blog;
+use App\BlogImage;
 use Illuminate\Support\Facades\Auth;
+
 
 
 class VisitorController extends Controller
@@ -37,5 +40,10 @@ class VisitorController extends Controller
             $curriculum = Curriculum::select('id', 'name')->get();
             return view('visitor/login')->with('curriculum', $curriculum);
         }
+    }
+
+    public function indexBlog($id){
+        $blog =  Blog::find($id);
+        return view('visitor/blogShow')->with(['blog' => $blog]);
     }
 }
