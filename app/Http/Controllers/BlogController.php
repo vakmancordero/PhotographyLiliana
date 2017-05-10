@@ -14,6 +14,10 @@ class BlogController extends Controller
 {
     public function index(){
         $blogs = Blog::latest()->paginate(15);
+
+        foreach($blogs as $n){
+            $n->link = str_replace(' ', '-', $n->name);
+        }
         return view('admin/blog/index')->with('blogs', $blogs);
     }
 
@@ -49,16 +53,12 @@ class BlogController extends Controller
             return back()->withInput();
         }
 
-        //AUTO COLOCAR <BR>
-        $texto = $request->historia;
-        $texto = rawurlencode($texto);
-        $texto = rawurldecode(str_replace("%0D%0A","<br>",$texto));
 
         //NUEVO BLOG
         $blog = new Blog;
 
         $blog->name = $request->name;
-        $blog->description = $texto;
+        $blog->description = $request->historia;
         $blog->date = $request->date;
         $blog->image = $path;
 
@@ -78,12 +78,6 @@ class BlogController extends Controller
 
     public function edit($id) {
             $blog = Blog::find($id);
-
-            $text = $blog->description;
-            $breaks = array("<br />","<br>","<br/>");
-            $text = str_ireplace($breaks, "\r\n", $text);
-            $blog->description = $text;
-
             return view('admin/blog/edit')->with('blog', $blog);
     }
 
@@ -96,10 +90,6 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::find($id);
-
-        $texto = $request->historia;
-        $texto = rawurlencode($texto);
-        $texto = rawurldecode(str_replace("%0D%0A", "<br>", $texto));
 
         if ($request->imagen) {
             $img = $request->file('imagen');
@@ -121,7 +111,7 @@ class BlogController extends Controller
         }
 
         $blog->name = $request->name;
-        $blog->description = $texto;
+        $blog->description = $request->historia;
         $blog->date = $request->date;
 
         if ($request->galeria == "on"){

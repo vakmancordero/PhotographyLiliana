@@ -29,7 +29,7 @@
                     </div>
                     <div class="ten wide column" style="padding: 5px 0px 0px 0px !important;">
                         <h3>{{$blog->name}}</h3>
-                        <a href="{{url("blog/$blog->id")}}">
+                        <a href="{{url("blog/$blog->link")}}">
                             <button class="mini positive ui button">ver</button>
                         </a>
                         <a href="{{url('admin/blog/modificar' ."/$blog->id") }}">

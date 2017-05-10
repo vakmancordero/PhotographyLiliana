@@ -1,8 +1,25 @@
+
 @extends('layouts.app')
 @section('script')
-    <script>$('.ui.checkbox')
-            .checkbox()
-        ;</script>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script>
+        $('.ui.checkbox').checkbox();
+
+        CKEDITOR.replace( 'editor' );
+
+        function editar(){
+
+            var data = CKEDITOR.instances.editor.getData();
+//
+                $('<input>')
+                    .val(data)
+                    .attr('name' , 'historia')
+                    .appendTo($('#formulario'));
+
+
+        }
+
+    </script>
 @stop
 @section('content')
 
@@ -10,23 +27,25 @@
         <strong>Exito!</strong> La modificacion se ha realizado correctamente
     @endif
 
-    <h1>Blog - Crear un nuevo post</h1>
+    <h1>{{$blog->name}}</h1>
 
-    <form class="ui form" role="form" method="POST" action="{{ url('admin/blog/modificar' . "/$blog->id") }}" enctype="multipart/form-data">
+    <form  id="formulario" class="ui form" role="form" method="POST" action="{{ url('admin/blog/modificar' . "/$blog->id") }}" enctype="multipart/form-data" onsubmit=" return editar()">
 
         {{ csrf_field() }}
 
         <div class="field{{ $errors->has('name') ? ' has-error' : '' }}">
 
             <label>Nombre: </label>
-            <input type="text" value="{{$blog->name}}" class="form-control" name="name" required autofocus>
+            <input type="text" value="{{$blog->name}}" id="blogName" class="form-control" name="name" required autofocus>
 
                 <br><br>
                 <img src="{{url('images/aplication/blog' . "/$blog->image")}}" style="width: 300px">
 
 
             <label>Escribe tu historia: </label>
-            <textarea type="text" class="form-control" name="historia" required>{{$blog->description}}</textarea>
+            <textarea name="editor1" id="editor" rows="10" cols="80" style="display: none">
+                {{$blog->description}}
+            </textarea>
 
             @if ($errors->has('name'))
                 <span class="help-block">

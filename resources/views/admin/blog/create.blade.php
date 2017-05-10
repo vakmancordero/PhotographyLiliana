@@ -1,8 +1,21 @@
 @extends('layouts.app')
 @section('script')
-    <script>$('.ui.checkbox')
-            .checkbox()
-        ;</script>
+    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <script>
+
+        CKEDITOR.replace( 'editor' );
+
+        $('.ui.checkbox').checkbox();
+
+
+        function editar(){
+            var data = CKEDITOR.instances.editor.getData();
+            $('#blogHistoria').val(data);
+
+//            return false;
+        }
+
+    </script>
 @stop
 @section('content')
 
@@ -12,7 +25,7 @@
 
     <h1>Blog - Crear un nuevo post</h1>
 
-    <form class="ui form" role="form" method="POST" action="{{ url('admin/blog/create') }}" enctype="multipart/form-data">
+    <form class="ui form" role="form" method="POST" action="{{ url('admin/blog/create') }}" enctype="multipart/form-data" onsubmit="return editar()">
 
         {{ csrf_field() }}
 
@@ -22,7 +35,8 @@
             <input type="text" class="form-control" name="name" required autofocus>
 
             <label>Escribe tu historia: </label>
-            <textarea type="text" class="form-control" name="historia" required></textarea>
+            <textarea name="editor1" id="editor" rows="10" cols="80" style="display: none"></textarea>
+            <input type="hidden" id="blogHistoria" name="historia" value="">
 
             @if ($errors->has('name'))
                 <span class="help-block">

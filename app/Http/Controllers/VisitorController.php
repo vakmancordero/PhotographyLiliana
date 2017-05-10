@@ -49,9 +49,16 @@ class VisitorController extends Controller
         }
     }
 
-    public function indexBlog($id){
-        $blog =  Blog::find($id);
-        return view('visitor/blogShow')->with(['blog' => $blog]);
+    public function indexBlog(){
+        $blogs =  Blog::paginate(12);
+
+        foreach($blogs as $n){
+            $n->link = str_replace(' ', '-', $n->name);
+            $n->date = str_replace('-', ' . ', $n->date);
+        }
+
+        $curriculum = Curriculum::select('id', 'name')->get();
+        return view('visitor/blogIndex')->with(['blogs' => $blogs, 'curriculum' => $curriculum]);
     }
 
     public function blog($name){
