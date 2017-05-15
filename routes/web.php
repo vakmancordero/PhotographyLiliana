@@ -60,5 +60,19 @@ Route::get('admin/blog/destroy/{id}', 'BlogController@destroyBlog');
 Route::get('admin/blog/test' , 'BlogController@test');
 
 //Register
-Route::get('admin/register' , 'AuthController@getRegister');
-Route::post('admin/register' , 'AuthController@postRegister');
+Route::get('admin/clientes' , 'UserController@index');
+Route::get('admin/clientes/modificar/{id}' , 'UserController@edit');
+Route::post('admin/clientes/modificar/{id}' , 'UserController@update');
+Route::get('admin/register' , 'UserController@getRegister');
+Route::post('admin/register' , 'User@postRegister');
+
+
+//Galeria Clientes
+Route::get('/admin/clientes/{id}/galerias', 'AlbumClientsController@userGallery');
+Route::get('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@createGallery');
+Route::post('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@storeGallery');
+Route::get('admin/galleryClient/{id}/upload', 'AlbumClientsController@getUploadView');
+Route::post('admin/galleryClient/{id}/upload', 'AlbumClientsController@saveImages');
+Route::get('admin/galleryClient/{id}', 'AlbumClientsController@getGallery');
+Route::get('admin/galleryClient/{id}/getImages', 'AlbumClientsController@getImages');
+Route::get('admin/galleryClient/deleteImage/{id}', 'AlbumClientsController@deleteImage');

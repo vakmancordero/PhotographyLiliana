@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('script')
+
+    <script>
+        $(document).ready(function(){
+             $('#validarTel').keypress(function (e){
+                 if(String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+             })
+        });
+
+
+    </script>
+
+@endsection
+
 @section('content')
     <div class="ui raised very padded text container segment">
 
@@ -59,6 +73,15 @@
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="password-confirm" class="col-md-4 control-label">Telefono</label>
+
+                <div class="col-md-6">
+                    <input type="tel" value="{{old('tel')}}" class="form-control" name="phone" maxlength="10" id="validarTel">
+                </div>
+            </div>
+
             <br>
             <div class="ui toggle checkbox">
                 <input type="checkbox" name="level">

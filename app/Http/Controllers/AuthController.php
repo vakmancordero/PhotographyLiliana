@@ -34,48 +34,4 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function getRegister(){
-        return view('admin/register');
-    }
-
-    public function postRegister(Request $request) {
-
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|max:100|unique:users',
-            'password' => 'required|confirmed'
-        ]);
-
-        $name = $request->name;
-        $mail = $request->email;
-        $password = $request->password;
-
-        if(isset($request->level)){
-
-            $user = new User();
-
-            $user->name = $name;
-            $user->email = $mail;
-            $user->password = bcrypt($password);
-            $user->level = 1;
-
-            $user->save();
-
-        } else {
-
-            $user = new User();
-
-            $user->name = $name;
-            $user->email = $mail;
-            $user->password = bcrypt($password);
-            $user->level = 0;
-
-            $user->save();
-
-        }
-
-        return redirect()->back()->with('msj', 1);
-
-    }
-
 }

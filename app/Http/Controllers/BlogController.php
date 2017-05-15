@@ -29,16 +29,14 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'historia' => 'required',
-            'name' => 'required|max:100|unique:blog',
+            'name' => 'required|max:100|unique:album_clients',
             'imagen' => 'required|image',
             'date' => 'required'
         ]);
 
 
         $img = $request->file('imagen');
-
         $path = time().'.'. $img->getClientOriginalExtension();
-
         $img =  Image::make($img);
 
         if( $img->width() >= $img->height()) {

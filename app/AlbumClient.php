@@ -10,7 +10,7 @@ class AlbumClient extends Model
     protected $table = 'album_clients';
 
     protected $fillable = [
-        'client_id','name','img','selection'
+        'client_id','name','img','disponible','date'
     ];
 
 }

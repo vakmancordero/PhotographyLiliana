@@ -58,6 +58,11 @@ return [
             'root' => public_path('images/aplication/blog'),
         ],
 
+        'client' =>[
+            'driver' => 'local',
+            'root' => public_path('images/aplication/clients'),
+        ],
+
         'prueba' =>[
             'driver' => 'local',
             'root' => public_path('prueba'),

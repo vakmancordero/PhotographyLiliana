@@ -27,4 +27,8 @@ class directories
     public static function getBlogPath() {
         return self::$imagesAplicationPath . 'blog/';
     }
+
+    public static function getClientPath() {
+        return self::$imagesAplicationPath . 'clients/';
+    }
 }
