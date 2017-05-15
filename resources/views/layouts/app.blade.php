@@ -41,15 +41,8 @@
         <a class="item" href="{{url('admin/blog')}}">Blog</a>
         <a class="item" href="{{url('admin/clientes')}}">Clientes</a>
         <a class="item" href="{{url('admin/register')}}">Registrar Cliente</a>
-        <a href="{{ url('logout') }}" class="item"
-           onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-            Cerrar Sesión
-        </a>
+        <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>
 
-        <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
         <br><br>
         <a href="{{url('/')}}">
             <img src="{{url('images/logo/rueda.png')}}" width="50%" style="margin: 0 auto; display: block;" ></a>
@@ -65,15 +58,10 @@
     <div class="right menu">
 
         <div class="item">
-            <a href="{{ url('logout') }}" class="ui primary button  "
-               onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
+            <a href="{{ url('logout') }}" class="ui primary button">
                 Cerrar Sesión
             </a>
 
-            <form id="logout-form" action="{{ url('logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
-            </form>
         </div>
 
     </div>

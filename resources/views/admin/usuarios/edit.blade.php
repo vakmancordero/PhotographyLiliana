@@ -31,13 +31,9 @@
                 </div>
             </div>
 
-            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                <label for="email" class="col-md-4 control-label">Correo electronico:</label>
 
-                <div class="col-md-6">
-                    <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" required>
-                </div>
-            </div>
+                <h5>Correo Electronico:</h5>
+                <h3>{{$usuario->email}}</h3>
 
             <div class="form-group">
                 <label for="password-confirm" class="col-md-4 control-label">Telefono</label>

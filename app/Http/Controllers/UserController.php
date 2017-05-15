@@ -8,6 +8,11 @@ use App\User;
 class UserController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         $usuarios = User::where('level' , 0)->paginate(2);
@@ -28,14 +33,12 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|max:100',
         ]);
 
 
         $user = User::find($id);
 
         $user->name = $request->name;
-        $user->email = $request->email;
         $user->phone = $request->phone;
 
         if($request->password)

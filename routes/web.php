@@ -12,7 +12,7 @@ Route::get('login' , 'VisitorController@login');
 
 Route::post('login', 'AuthController@login');
 Route::get('/admin', 'AuthController@auth');
-Route::post('/logout', 'AuthController@logout');
+Route::get('/logout', 'AuthController@logout');
 //Auth::routes();
 
 // Vista principal
@@ -67,7 +67,7 @@ Route::get('admin/register' , 'UserController@getRegister');
 Route::post('admin/register' , 'User@postRegister');
 
 
-//Galeria Clientes
+//Galeria Clientes Administrador
 Route::get('/admin/clientes/{id}/galerias', 'AlbumClientsController@userGallery');
 Route::get('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@createGallery');
 Route::post('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@storeGallery');
@@ -76,3 +76,13 @@ Route::post('admin/galleryClient/{id}/upload', 'AlbumClientsController@saveImage
 Route::get('admin/galleryClient/{id}', 'AlbumClientsController@getGallery');
 Route::get('admin/galleryClient/{id}/getImages', 'AlbumClientsController@getImages');
 Route::get('admin/galleryClient/deleteImage/{id}', 'AlbumClientsController@deleteImage');
+Route::get('admin/galleryClient/destroyGallery/{id}', 'AlbumClientsController@destroyGallery');
+
+//Area de Clientes
+Route::group(['middleware' => 'client'], function () {
+    Route::get('client', 'ClientController@index');
+    Route::get('client/{id}', 'ClientController@getAlbum');
+    Route::get('client/{id}/getImages', 'ClientController@getImages');
+});
+
+

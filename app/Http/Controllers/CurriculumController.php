@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class CurriculumController extends Controller {
+class CurriculumController extends Controller
+{
+    public function __construct() { $this->middleware('admin'); }
 
     public function index() {
         

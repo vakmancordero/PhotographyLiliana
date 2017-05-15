@@ -12,7 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
+    public function __construct() { $this->middleware('admin'); }
+
     public function index(){
+
         $blogs = Blog::latest()->paginate(15);
 
         foreach($blogs as $n){

@@ -42,7 +42,15 @@ class VisitorController extends Controller
 
 
         if(Auth::check()) {
-            return redirect('admin');
+
+            if(Auth::user()->level == 1) {
+                return redirect('admin');
+            }
+            else if (Auth::user()->level == 0) {
+                return redirect('client');
+            }
+
+
         } else {
             $curriculum = Curriculum::select('id', 'name')->get();
             return view('visitor/login')->with('curriculum', $curriculum);

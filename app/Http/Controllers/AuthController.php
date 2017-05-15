@@ -21,7 +21,7 @@ class AuthController extends Controller
         }
         else if (Auth::attempt(['email' => $email, 'password' => $password , 'level' => 0])) {
             // Authentication passed...
-            return 'login';
+            return redirect('client');
         }
     }
 
@@ -31,7 +31,7 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
 }

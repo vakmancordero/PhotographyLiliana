@@ -1,4 +1,4 @@
-@extends('layouts.visitor3')
+@extends('layouts.visitor2')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/visitor/main.css') }}">
@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/visitor/blogIndex.css') }}">
 @stop
 
-@section('javascript')
+@section('script')
     <script src="{{asset('js/visitor/sliderIndex.js')}}"></script>
 @stop
 

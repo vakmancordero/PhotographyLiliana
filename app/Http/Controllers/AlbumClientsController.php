@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 
 class AlbumClientsController extends Controller
 {
+    public function __construct() { $this->middleware('admin'); }
+
     public function userGallery($id)
     {
         $user = User::find($id);
@@ -150,10 +152,25 @@ class AlbumClientsController extends Controller
 
     }
 
+    public function destroyGallery($id)
+    {
+        $galeria = AlbumClient::find($id);
+        $imagenes = AlbumImagesClient::where('album_clients_id', $galeria->id)->get();
+
+        foreach($imagenes as $img){
+            $this->destroyImage($img);
+        }
+
+        Storage::disk('client')->delete('principal_'.$galeria->img);
+        Storage::disk('client')->delete('secundaria_'.$galeria->img);
+
+        $galeria->delete();
+        return back();
+    }
+
     public function deleteImage($id)
     {
         $this->destroyImage(AlbumImagesClient::find($id));
-
         return 'eliminado' . $id;
     }
 
@@ -163,6 +180,5 @@ class AlbumClientsController extends Controller
         Storage::disk('client')->delete('computer/'.$img->path);
         Storage::disk('client')->delete('mov/'.$img->path);
         $img->delete();
-
     }
 }

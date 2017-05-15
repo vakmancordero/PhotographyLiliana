@@ -1,0 +1,68 @@
+.headImage img{
+    display: none;
+}
+
+.headImage div {
+    -moz-background-size: cover;
+    background-size: cover ;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-position: center;
+    width: 100vw;
+    height: 50vh;
+}
+
+.headImage{
+    z-index: 10;
+}
+
+#titulo {
+    text-align: center;
+}
+
+#galleryConteiner {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2%;
+    background: white;
+    padding: 2%;
+}
+#links a {
+    width: 33%;
+}
+
+#links img {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .headImage div {
+        display: none;
+    }
+
+    .headImage img {
+        width: 100%;
+        display: block;
+    }
+    #galleryConteiner {
+        width: 95%;
+        padding: 1%;
+
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    #galleryConteiner {
+        width: 98%;
+        padding: 0;
+    }
+
+    #links a {
+        width: 50%;
+    }
+
+
+
+}
