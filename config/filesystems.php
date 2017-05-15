@@ -51,21 +51,19 @@ return [
         'curriculum' =>[
             'driver' => 'local',
             'root' => public_path('images/aplication/curriculum'),
+//            'root' => public_path('../../public_html/images/aplication/curriculum'),
         ],
 
         'blog' =>[
             'driver' => 'local',
             'root' => public_path('images/aplication/blog'),
+//            'root' => public_path('../../public_html/images/aplication/blog'),
         ],
 
         'client' =>[
             'driver' => 'local',
             'root' => public_path('images/aplication/clients'),
-        ],
-
-        'prueba' =>[
-            'driver' => 'local',
-            'root' => public_path('prueba'),
+//            'root' => public_path('../../public_html/images/aplication/clients'),
         ],
 
 

@@ -64,7 +64,7 @@ Route::get('admin/clientes' , 'UserController@index');
 Route::get('admin/clientes/modificar/{id}' , 'UserController@edit');
 Route::post('admin/clientes/modificar/{id}' , 'UserController@update');
 Route::get('admin/register' , 'UserController@getRegister');
-Route::post('admin/register' , 'User@postRegister');
+Route::post('admin/register' , 'UserController@postRegister');
 
 
 //Galeria Clientes Administrador
