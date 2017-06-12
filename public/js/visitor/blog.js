@@ -1,13 +1,16 @@
 heightEverithing();
 $(document).ready(function(){
-
     moveBlog();
+});
 
+
+$(window).resize(function(){
+   responsiveMoveBlog();
 });
 
 
 
-function getImages() {
+function getImages(pantalla) {
     var gallery = $('#blogGal').val();
 
     if (gallery == 1) {
@@ -23,7 +26,6 @@ function getImages() {
 
 
 
-
             result.forEach(function (item, index) {
 
 
@@ -33,10 +35,10 @@ function getImages() {
                 if (pantallaWidth >= 1100) {
                     var url1 = homePath + "/images/aplication/blog/tablet/" + item.path;
                     var url2 = homePath + "/images/aplication/blog/computer/" + item.path;
-                } else if (windowWidth >= 659) {
+                } else if (pantallaWidth >= 659) {
                     var url1 = homePath + "/images/aplication/blog/tablet/" + item.path;
                     var url2 = homePath + "/images/aplication/blog/tablet/" + item.path;
-                } else {
+                } else if(pantallaWidth < 659){
                     var url1 = homePath + "/images/aplication/blog/mov/" + item.path;
                     var url2 = homePath + "/images/aplication/blog/mov/" + item.path;
                 }
@@ -48,31 +50,36 @@ function getImages() {
                                 .prop('title', 'Blog')
                                 .attr('data-gallery', '#blueimp-gallery-links')
                                 .appendTo($("#links"));
-
-                nuevo.imagesLoaded(function(){
+                if(pantalla == 0) {
+                    nuevo.imagesLoaded(function () {
+                        heightEverithing();
+                    });
+                } else {
                     heightEverithing();
-                });
+                }
 
             });
 
         });
-    }//If gallery exist
-
+    }
 }
 
 var pantallaWidth = $(window).width();
 
 function moveBlog(){
 
-    if(pantallaWidth >= 900) {
+    if(pantallaWidth >= 1000) {
         var landingHeight = $('#landing').height() / 2;
 
         $("#blogContent").animate({
             top: landingHeight
 
         }, 1000, function () {
-            getImages();
+
+            getImages(0);
         });
+    } else {
+        getImages(1);
     }
 }
 
@@ -80,4 +87,20 @@ function heightEverithing(){
 
     $('.everything').height($('#blogContent').height());
 
+}
+
+function responsiveMoveBlog(){
+    if($(window).width() >= 1000) {
+
+        var landingHeight = $('#landing').height() / 2;
+
+        $("#blogContent").animate({
+            top: landingHeight
+
+        }, 1000);
+
+        $('.everything').height($('#blogContent').height());
+    } else {
+        $('.everything').height('auto');
+    }
 }

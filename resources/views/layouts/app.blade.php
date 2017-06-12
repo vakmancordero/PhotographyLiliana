@@ -39,6 +39,7 @@
         <a href="{{url('admin')}}"><img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block"></a>
         <a class="item" href="{{url('admin/curriculum')}}">Curriculum</a>
         <a class="item" href="{{url('admin/blog')}}">Blog</a>
+        <a class="item" href="{{url('admin/galerias-de-clientes')}}">Galerias de Cliente</a>
         <a class="item" href="{{url('admin/clientes')}}">Clientes</a>
         <a class="item" href="{{url('admin/register')}}">Registrar Cliente</a>
         <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>

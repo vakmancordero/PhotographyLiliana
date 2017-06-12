@@ -24,14 +24,13 @@ class VisitorController extends Controller
         }
         return view('visitor/index')->with(['curriculum' => $curriculum, 'blogs' => $blogs]);
     }
-    public function curriculum($id){
+    public function portafolio($name){
 
-        $curriculum = Curriculum::select('id' , 'name')->get();
-        $actual = Curriculum::find($id);
+        $name = str_replace('-', ' ', $name);
 
-        $images = CurriculumImage::where('curriculum_id', $id)->get();
+        $curriculumActual = Curriculum::where('name' , $name)->first();
 
-        return view('visitor/curriculum')->with(['curriculum' => $curriculum, "images" => $images, "curriculumActual" => $actual ]);
+        return view('visitor/curriculum')->with(["portafolio" => $curriculumActual ]);
     }
     public function curriculumPhotos($id){
         $photos = CurriculumImage::where('curriculum_id', $id)->get();

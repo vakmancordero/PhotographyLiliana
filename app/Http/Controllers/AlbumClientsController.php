@@ -18,8 +18,14 @@ class AlbumClientsController extends Controller
     public function userGallery($id)
     {
         $user = User::find($id);
-        $albums = AlbumClient::where('client_id', $user->id)->get();
+        $albums = AlbumClient::where('client_id', $user->id)->orderBy('date','desc')->get();
         return view('admin/usuarios/galleries')->with(['usuario' => $user, 'galerias' => $albums]);
+    }
+
+    public function getAllClientGalleries() {
+        $galerias = AlbumClient::orderBy('date','desc')->paginate(15);
+
+        return view('admin/userGallery/list')->with("galerias", $galerias);
     }
 
     public function getGallery($id)
@@ -64,7 +70,7 @@ class AlbumClientsController extends Controller
             });
             $img->save(directories::getClientPath() . "principal_" . $path);
 
-            $img->fit(600, 400, function ($constraint) {
+            $img->fit(400, 400, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
@@ -85,7 +91,7 @@ class AlbumClientsController extends Controller
 
         $album->save();
 
-        return redirect('admin/galleryClient/' . $album->id);
+        return redirect('admin/galleryClient/' . $album->id . "/upload");
     }
 
     public function getUploadView($id)
@@ -102,16 +108,18 @@ class AlbumClientsController extends Controller
 
         $img = $request->file('image');
 
+
         $file_route = time() . '.' . $img->getClientOriginalExtension();
 
         $imagen1 = Image::make($request->file('image'));
+        $mask = Image::make(directories::getMaskPath() . 'waterMark.png');
 
         if ($imagen1->width() >= $imagen1->height()) {
             $imagen1->resize(1000, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
-
+            $imagen1->insert($mask, 'bottom-right' ,  10, 10);
             $imagen1->save(directories::getClientPath() . 'computer/' . $file_route);
 
             $imagen1->resize(500, null, function ($constraint) {
@@ -121,12 +129,15 @@ class AlbumClientsController extends Controller
 
             $imagen1->save(directories::getClientPath() . 'mov/' . $file_route);
 
+
+
         } else {
             $imagen1->resize(null, 1000, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
 
+            $imagen1->insert($mask, 'bottom-right' ,  10, 10);
             $imagen1->save(directories::getClientPath() . 'computer/' . $file_route);
 
 
@@ -148,7 +159,7 @@ class AlbumClientsController extends Controller
         $imagen->select = 0;
         $imagen->save();
 
-        return $file_route;
+        return $imagen;
 
     }
 

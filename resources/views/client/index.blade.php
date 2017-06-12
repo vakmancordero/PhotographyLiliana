@@ -5,15 +5,16 @@
 @endsection
 
 @section('script')
-
+    <script src="{{ asset('js/client/preventDownload.js') }}"></script>
 @endsection
 
 
 @section('content')
-
+<br><br><br>
     <div class="sectionClient">
 
     <h2>Hola {{ Auth::user()->name }}!</h2>
+        <p>Esta es una seccion especialmente creada para ti</p>
 
         <div class="albunes">
             @foreach($galerias as $n)

@@ -1,5 +1,5 @@
 $(document).ready(function(){            
-    sliderPosition();
+
     var sliderCount = $("#slider-container img").length;                    
     
     $('#slider-container div:gt(0)').hide();
@@ -9,6 +9,15 @@ $(document).ready(function(){
     }, 6000);    
     
     // $('#slider-container div').eq(3).css('display' , 'none');
+
+    $("#slider-container").on("swipeleft",function(){
+         sliderNext();
+    });
+
+    $("#slider-container").on("swiperight",function(){
+        sliderBefore();
+    });
+
 });
 
 
@@ -27,12 +36,15 @@ function sliderPosition() {
 
     if(ventana_ancho > 1200) {                 
         $('#slider-container').css('height' , ventana_alto );
+        $('#slider-container').css('top' , 0 );
+        $('#slider-container').css('margin-bottom' , 'auto' );
         
     } else { 
         var redimencion = ventana_ancho / 3;
         redimencion = redimencion * 2;        
         $('#slider-container').css('height' , redimencion );
         $('#slider-container').css('top' , 52 );
+        $('#slider-container').css('margin-bottom' , 52 );
     }
 
     var sliderHeight = $('#slider-container').height();
@@ -45,6 +57,12 @@ function sliderPosition() {
 
 
     $('.directions').css('margin-top', directionsTop);
+
+    if(ventana_ancho < 800) {
+        $('.directions').css('display', "none");
+    } else {
+        $('.directions').css({'display': 'block', 'margin-top': directionsTop});
+    }
 }
 
 function sliderNext() { 

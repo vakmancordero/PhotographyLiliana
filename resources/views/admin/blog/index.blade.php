@@ -20,7 +20,7 @@
     <h1 style="margin-top: 0">Panel de control - Blog</h1>
 
 
-    @if(isset($blogs))
+
         @foreach($blogs as $blog)
             <div class="ui segment">
                 <div class="ui stackable grid">
@@ -47,7 +47,38 @@
                 </div>
             </div>
         @endforeach
-    @endif
+
+    <center>
+
+
+        <div class="ui demo buttons">
+            <!-- Previous Page Link -->
+            @if ($blogs->onFirstPage())
+                <div class="ui button disabled"><a href="#!"> < </a></div>
+            @else
+                <div class="ui button"><a href="{{ $blogs->previousPageUrl() }}"> < </a></div>
+
+            @endif
+
+        <!-- Pagination Elements -->
+            @for($i=1; $i <= $blogs->lastPage(); $i++)
+                @if($i == $blogs->currentPage())
+                    <div class="ui button disabled"><a href="#!" class=" white-text">{{$i}}</a></div>
+                @else
+                    <div class="ui button"><a href="{{url('admin/blog?page=' .  $i) }}">{{$i}}</a></div>
+                @endif
+            @endfor
+
+        <!-- Next Page Link -->
+            @if ($blogs->hasMorePages())
+                <div class="ui button"><a href="{{ $blogs->nextPageUrl() }}"> > </a></>
+            @else
+                <li class="ui button disabled"><a href="#!"> > </a></li>
+            @endif
+        </div>
+
+    </center>
+
 
 @endsection
 

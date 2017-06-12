@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\CurriculumImage;
 use Illuminate\Http\Request;
 use App\Blog;
 use App\BlogImage;
@@ -28,8 +27,8 @@ class BlogController extends Controller
         return view('admin/blog/create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
         $this->validate($request, [
             'historia' => 'required',
             'name' => 'required|max:100|unique:album_clients',
@@ -179,12 +178,12 @@ class BlogController extends Controller
         $imagen->blog_id = $id;
         $imagen->save();
 
-        return $file_route;
+        return $imagen;
 
     }
 
     public function uploadGetImages($id) {
-        return BlogImage::where('blog_id' , $id)->get();
+        return BlogImage::where('blog_id' , $id)->orderBy('id','desc')->get();
     }
 
     public function uploadDeleteImage($id){

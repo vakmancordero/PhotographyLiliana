@@ -13,7 +13,7 @@ class ClientController extends Controller
 
     public function index()
     {
-        $galerias = AlbumClient::where('client_id', Auth::user()->id)->get();
+        $galerias = AlbumClient::where('client_id', Auth::user()->id)->orderBy('date','desc')->get();
 
         return view('client/index')->with('galerias',$galerias);
     }
@@ -25,6 +25,6 @@ class ClientController extends Controller
     }
 
     public function getImages($id){
-        return AlbumImagesClient::where('album_clients_id', $id)->get();
+        return AlbumImagesClient::where('album_clients_id', $id)->orderBy('id','desc')->get();
     }
 }

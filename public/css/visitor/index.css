@@ -1,0 +1,122 @@
+/*SLIDER SECTION*/
+html, body, #fullheight {
+    min-height: 100% !important;
+    height: 100%;
+}
+#slider-container {
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: block;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+#slider-container div {
+    position:absolute;
+    top:0;
+    left:0;
+    width: 100%;
+}
+#slider-container img{
+
+    width: 100%;
+
+}
+#activeSliderImg img
+{
+    display: block;
+}
+
+
+#leftSlider {
+
+    left: 18px;
+}
+#rightSlider {
+
+    right: 18px;
+}
+
+.directions {
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px black;
+    font-size: 60px;
+    color: white;
+    margin:0;
+    padding:  50px 10px 50px 10px;
+
+}
+
+.directions:hover {
+    border-radius: 10px 10px 10px 10px;
+    -moz-border-radius: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border: 3px solid white;
+    background-color: rgba(0,0,0,.1);
+}
+
+@media screen and(max-width: 1000px){
+    .directions {
+        display: none;
+    }
+}
+@media screen and(max-width: 700px) {
+    #rightSlider {
+        display: none !important;
+    }
+}
+
+/*QUIEN SOY SECTION INDEX*/
+
+#quienSoy {
+    width: 80%;
+    padding: 35px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    /*align-items: center;*/
+    justify-content: center;
+    flex-flow: row wrap;
+
+}
+
+#quienSoy div {
+    width: 70%;
+}
+#quienSoy .descripcion {
+    width: 30%;
+    padding-left: 10%;
+}
+
+@media screen and (max-width:1000px) {
+    #quienSoy {
+        margin-top: 100px;
+        width: 93%;
+    }
+}
+
+@media screen and (max-width: 700px){
+
+    #quienSoy {
+        margin-top: 50px;
+        width: 93%;
+    }
+
+    #quienSoy div {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0 ;
+    }
+
+    #quienSoy .descripcion {
+        margin-top: 30px;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0 ;
+    }
+}

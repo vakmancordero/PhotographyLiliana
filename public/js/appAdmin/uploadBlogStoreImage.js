@@ -1,8 +1,11 @@
+var homePath = $('#homePath').val();
+
 Dropzone.options.addImagesForm = {
 
     paramName: 'image',
-    maxFilesize: 20,
-    acceptedFiles: '.jpg, .jpeg, .gif, .png, .bmp',
+    maxFilesize: 30,
+    parallelUploads:1,
+    acceptedFiles: '.jpg, .jpeg, .gif, .png',
     addRemoveLinks: true,
     success: function(file, response){
         console.log(file.name);
@@ -10,6 +13,25 @@ Dropzone.options.addImagesForm = {
         file.serverImageId = response.id;
 
         console.log(response);
+
+        var url1 = homePath + "/images/aplication/blog/app/" + response.path;
+        var url2 = homePath + "/images/aplication/blog/computer/" + response.path;
+
+        $('<a/>')
+            .append($('<div>')
+                .prop({"style" : "background-image: url(" + url1 + ");" , 'id' : 'photos'})
+                .append($('<i>')
+                    .prop({class:'trash icon' , id:'trash'+response.id})
+                    .attr('onclick', "deleteLB("+response.id+")")))
+            .prop('href', url2)
+            .prop('title', response.name)
+            .prop('id', 'linkElement')
+            .attr('data-gallery', '#blueimp-gallery-links')
+            .prependTo($("#links"));
+
+        phothosWidth();
+
+        $('.dz-preview.dz-processing.dz-image-preview.dz-complete').remove();
     },
     removedfile: function(file) {
 
@@ -74,3 +96,7 @@ $(function () {
     });
 
 });
+
+setInterval(function(){
+    $('.dz-preview.dz-processing.dz-image-preview.dz-complete').remove();
+}, 10000);

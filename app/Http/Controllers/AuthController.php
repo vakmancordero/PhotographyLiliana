@@ -23,6 +23,8 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect('client');
         }
+
+        else return back()->with('msj','Contraseña o correo incorrecto');
     }
 
     public function auth() {

@@ -62,3 +62,20 @@ $(function () {
     });
 
 });
+
+$(document).ready(function () {
+   moveAlbum();
+});
+function moveAlbum(){
+    var space = $('#landing').height() / 2;
+
+    $("#albumContent").animate({
+        top: space
+
+    }, 1000, function () {
+
+        // getImages(0);
+    });
+
+
+}

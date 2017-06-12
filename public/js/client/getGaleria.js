@@ -35,7 +35,7 @@ $(function () {
                 .append($('<img>')
                     .prop({"src" : url1 }))
                 .prop('href', url2)
-                .prop('title', item.name)
+                .prop('title', item.id)
                 .prop('class', 'pint')
                 .attr('data-gallery', '#blueimp-gallery-links')
                 .appendTo($("#links"))

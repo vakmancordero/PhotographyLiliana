@@ -1,11 +1,16 @@
-@extends('layouts.visitor3')
+@extends('layouts.visitor2')
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
     
 @stop
 
-@section('content')<br><br><br><br>
+@section('content')
+    <br><br><br><br>
 <div class="ui raised very padded text container segment">
+
+    @if(session()->has('msj'))
+        <script>alert('ERROR: Usuario o contraseña incorrectos');</script>
+    @endif
 
                 <h1 style="text-align: center">Inicia tu sesión</h1>
                 <img src="images/logo/rueda.png" style="margin: 0 auto; display: block; width: 150px; padding-bottom: 20px;">

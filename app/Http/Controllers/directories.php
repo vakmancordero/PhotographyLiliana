@@ -13,7 +13,10 @@ class directories
 {
 
     public static $imagesAplicationPath =  'images/aplication/';
+    public static $imagesLogoPath =  'images/logo/';
 
+//    public static $imagesAplicationPath =  '../lilianapineda/images/aplication/';
+//    public static $imagesLogoPath =  '../lilianapineda/images/logo/';
 
     public static function  getAplicationPath() {
         return self::$imagesAplicationPath;
@@ -30,5 +33,9 @@ class directories
 
     public static function getClientPath() {
         return self::$imagesAplicationPath . 'clients/';
+    }
+
+    public static function getMaskPath() {
+        return self::$imagesLogoPath;
     }
 }

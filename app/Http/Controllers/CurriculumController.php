@@ -15,7 +15,7 @@ class CurriculumController extends Controller
 
     public function index() {
         
-    	$curriculums = Curriculum::get();
+    	$curriculums = Curriculum::paginate(5);
         
         return view('admin/curriculum/index')->with(
         	['curriculums' => $curriculums]
@@ -32,17 +32,86 @@ class CurriculumController extends Controller
         $this->validate($request, [
             'description' => 'required',
             'name' => 'required|max:100|unique:curriculum',
+            'image' => 'required|image',
         ]);
 
+        $img = $request->file('image');
+        $path = time() . '.' . $img->getClientOriginalExtension();
+        $img = Image::make($img);
+
+        if ($img->width() >= $img->height()) {
+            $img->resize(1300, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save(directories::getCurriculumPath() . "principal_" . $path);
+            $img->fit(600, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save(directories::getCurriculumPath() . "secundaria_" . $path);
+        } else {
+            return back()->withInput();
+        }
+
         $curriculum = new Curriculum;
+
+        $curriculum->name = $request->name;
+        $curriculum->description = $request->description;
+        $curriculum->image = $path;
+
+        $curriculum->save();
+
+        $curriculum = Curriculum::select('id')->orderBy('id', 'desc')->first();
+        return redirect('admin/curriculum/upload/' . $curriculum->id);
+    }
+    public function edit($id){
+        $curriculum = Curriculum::find($id);
+        return view("admin/curriculum/edit")->with('curriculum',$curriculum);
+
+    }
+
+    public function update($id, Request $request){
+
+
+        $this->validate($request, [
+            'description' => 'required',
+            'name' => 'required|max:100',
+        ]);
+
+        $curriculum = Curriculum::find($id);
+
+        if ($request->image) {
+            $img = $request->file('image');
+            $path = time() . '.' . $img->getClientOriginalExtension();
+            $img = Image::make($img);
+            if ($img->width() >= $img->height()) {
+                $img->resize(1300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $img->save(directories::getCurriculumPath() . "principal_" . $path);
+                $img->fit(600, 400, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $img->save(directories::getCurriculumPath() . "secundaria_" . $path);
+
+                Storage::disk('curriculum')->delete('principal_'.$curriculum->image);
+                Storage::disk('curriculum')->delete('secundaria_'.$curriculum->image);
+
+                $curriculum->image = $path;
+            } else {
+                return back()->withInput();
+            }
+        }
 
         $curriculum->name = $request->name;
         $curriculum->description = $request->description;
 
         $curriculum->save();
 
-        $curriculum = Curriculum::select('id')->orderBy('id', 'desc')->first();
-        return redirect('admin/curriculum/upload/' . $curriculum->id);
+        return back()->with('msj' , 'success');
     }
 
     public function uploadImages($id) {
@@ -124,12 +193,8 @@ class CurriculumController extends Controller
         $img->path = $file_route;
         $img->save();
 
-        return 'true';
+        return $img;
 
-//		$curriculum = Curriculum::getOne($id);
-//		$img = $this->makeImage($request->file('image'));
-//		$curriculum->saveImage($img);
-//		return $img;
 	}
 	
 	private function makeImage(UploadedFile $file) {
@@ -153,6 +218,9 @@ class CurriculumController extends Controller
 
         }
 
+        Storage::disk('curriculum')->delete('principal_'.$curriculum->image);
+        Storage::disk('curriculum')->delete('secundaria_'.$curriculum->image);
+
         $curriculum->delete();
         return back();
     }
@@ -165,7 +233,15 @@ class CurriculumController extends Controller
 
 	        $idCurriculum =  $request->id;
 
-	        return CurriculumImage::where('curriculum_id', $idCurriculum)->get();
+	        return CurriculumImage::where('curriculum_id', $idCurriculum)->orderBy('id','desc')->take(8)->get();
+
+        }
+
+        if ($method == 'upload') {
+
+            $idCurriculum =  $request->id;
+
+            return CurriculumImage::where('curriculum_id', $idCurriculum)->orderBy('id','desc')->get();
 
         }
 

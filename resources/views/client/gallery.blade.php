@@ -18,6 +18,7 @@
     <script src="{{ asset('gallery/js/jquery.blueimp-gallery.js') }}"></script>
 
     <script src="{{ asset('js/client/getGaleria.js') }}"></script>
+    <script src="{{ asset('js/client/preventDownload.js') }}"></script>
 
 @endsection
 

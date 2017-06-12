@@ -1,4 +1,4 @@
-@extends('layouts.visitor3')
+@extends('layouts.visitor2')
 
 @section('stylesheets')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/home/main.css') }}">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/visitor/blog.css') }}">
 @stop
 
-@section('javascript')
+@section('script')
     <script src="https://unpkg.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
     <script src="{{ asset('gallery/js/blueimp-helper.js') }}"></script>
     <script src="{{ asset('gallery/js/blueimp-gallery.js') }}"></script>
@@ -23,12 +23,13 @@
 
 
 <div style=" background-image: url('{{url('images/aplication/blog/' . $blog->image)}}')" id="landing">
-    asdasd
+
 </div>
-<div class="everything" style="background-image: url('{{url('images/texture.png')}}')  ;">
+<div class="everything">
 
     <div id="blogContent">
-        <h1>{{$blog->name}}</h1>
+        <h1 class="blogTitulo">{{$blog->name}}</h1>
+        <img src="{{url('images/aplication/blog/' . $blog->image)}}" class="blogImg">
         <p>{!! $blog->description !!}</p>
 
         <input type="hidden" value="{{$blog->id}}" id="blogId">

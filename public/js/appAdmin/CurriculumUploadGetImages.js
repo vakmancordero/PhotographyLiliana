@@ -12,7 +12,7 @@ $(function () {
         url: homePath + '/admin/getImages',
         type: "GET",
         data: {
-            method: 'inicio',
+            method: 'upload',
             id: curriculumId
         },
         async: true,

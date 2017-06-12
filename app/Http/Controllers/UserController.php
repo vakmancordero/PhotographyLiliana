@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\AlbumClient;
+use App\AlbumImagesClient;
 
 class UserController extends Controller
 {
@@ -15,7 +17,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $usuarios = User::where('level' , 0)->paginate(2);
+        $usuarios = User::where('level' , 0)->orderBy('name')->paginate(20);
 
         return view('admin/usuarios/index')->with('usuarios', $usuarios);
     }
@@ -79,4 +81,37 @@ class UserController extends Controller
         return redirect()->back()->with('msj', 1);
 
     }
+
+    public function destroy($id){
+        $usuario = User::find($id);
+        $galerias = AlbumClient::where('client_id', $usuario->id)->get();
+
+        if(count($galerias) == 0){
+            echo 'vacio <br>';
+        }
+
+        else {
+
+            foreach($galerias as $gal) {
+                $fotos = AlbumImagesClient::where('album_clients_id', $gal->id)->get();
+
+                foreach($fotos as $img){
+                    Storage::disk('client')->delete('app/'.$img->path);
+                    Storage::disk('client')->delete('computer/'.$img->path);
+                    Storage::disk('client')->delete('mov/'.$img->path);
+                    $img->delete();
+                }
+
+                Storage::disk('client')->delete('principal_'.$gal->img);
+                Storage::disk('client')->delete('secundaria_'.$gal->img);
+                $fotos->delete();
+
+            }
+        }
+
+        $usuario->delete();
+
+        return back()->with('msj', 'Usuario Eliminado');
+    }
 }
+

@@ -2,7 +2,7 @@
 
 Route::get('/', 'VisitorController@index');
 
-Route::get('portafolio/{id}', 'VisitorController@curriculum' );
+Route::get('portafolio/{name}', 'VisitorController@portafolio' );
 Route::get('portafolio/fotos/{id}', 'VisitorController@curriculumPhotos' );
 
 Route::get('blog', 'VisitorController@indexBlog' );
@@ -18,23 +18,16 @@ Route::get('/logout', 'AuthController@logout');
 // Vista principal
 
 
-// Lista los curriculums existentes.
 Route::get('admin/curriculum', 'CurriculumController@index');
 
-// -> GET
-// Retorna la vista para crear un curriculum.
 Route::get('admin/curriculum/create', 'CurriculumController@create');
-
-// -> POST
-// Crea el curriculum.
 Route::post('admin/curriculum/create', 'CurriculumController@createCurriculum');
 
+Route::get('admin/curriculum/edit/{id}', 'CurriculumController@edit');
+Route::post('admin/curriculum/edit/{id}', 'CurriculumController@update');
+
 Route::get('admin/curriculum/delete/{id}', 'CurriculumController@destroyCurriculum');
-
 Route::get('admin/curriculum/images/{id}', 'CurriculumController@destroyImage');
-
-// -> GET
-// Retorna el centro de carga para el curriculum seleccionado [ID]
 Route::get('admin/curriculum/upload/{id}', 'CurriculumController@uploadImages');
 
 Route::post('admin/curriculum/{id}/images', [
@@ -60,6 +53,7 @@ Route::get('admin/blog/destroy/{id}', 'BlogController@destroyBlog');
 Route::get('admin/blog/test' , 'BlogController@test');
 
 //Register
+Route::get('admin/clientes/eliminar/{id}', 'UserController@destroy');
 Route::get('admin/clientes' , 'UserController@index');
 Route::get('admin/clientes/modificar/{id}' , 'UserController@edit');
 Route::post('admin/clientes/modificar/{id}' , 'UserController@update');
@@ -68,6 +62,7 @@ Route::post('admin/register' , 'UserController@postRegister');
 
 
 //Galeria Clientes Administrador
+Route::get('admin/galerias-de-clientes', 'AlbumClientsController@getAllClientGalleries');
 Route::get('/admin/clientes/{id}/galerias', 'AlbumClientsController@userGallery');
 Route::get('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@createGallery');
 Route::post('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@storeGallery');
