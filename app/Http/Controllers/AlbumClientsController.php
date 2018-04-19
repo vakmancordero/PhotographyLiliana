@@ -109,7 +109,7 @@ class AlbumClientsController extends Controller
         $img = $request->file('image');
 
 
-        $file_route = time() . '.' . $img->getClientOriginalExtension();
+        $file_route = $img->getClientOriginalName(). "-" .time() . '.' . $img->getClientOriginalExtension();
 
         $imagen1 = Image::make($request->file('image'));
         $mask = Image::make(directories::getMaskPath() . 'waterMark.png');

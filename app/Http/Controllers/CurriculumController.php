@@ -36,7 +36,7 @@ class CurriculumController extends Controller
         ]);
 
         $img = $request->file('image');
-        $path = time() . '.' . $img->getClientOriginalExtension();
+        $path = $img->getClientOriginalName(). "-" .time() . '.' . $img->getClientOriginalExtension();
         $img = Image::make($img);
 
         if ($img->width() >= $img->height()) {
@@ -83,7 +83,7 @@ class CurriculumController extends Controller
 
         if ($request->image) {
             $img = $request->file('image');
-            $path = time() . '.' . $img->getClientOriginalExtension();
+            $path = $img->getClientOriginalName(). "-" .time() . '.' . $img->getClientOriginalExtension();
             $img = Image::make($img);
             if ($img->width() >= $img->height()) {
                 $img->resize(1300, null, function ($constraint) {
@@ -129,7 +129,7 @@ class CurriculumController extends Controller
 
         $img = $request->file('image');
 
-        $file_route = time().'.'. $img->getClientOriginalExtension();
+        $file_route = $img->getClientOriginalName(). "-" .time() . '.' . $img->getClientOriginalExtension();
 
         $imagen1 =  Image::make($request->file('image'));
 
