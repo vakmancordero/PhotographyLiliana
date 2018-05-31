@@ -7,7 +7,6 @@ use App\AlbumClient;
 use App\AlbumImagesClient;
 use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -17,13 +16,14 @@ class ClientController extends Controller
 
 
     public function login(Request $request){
+
+        
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        return response()->json('holi');
-        
         $credentials = $request->only('email', 'password');
 
         try {
@@ -53,6 +53,55 @@ class ClientController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
 
         return response()->json(['user' => $user]);
+
+    }
+
+    public function getAlbums(){
+
+        $user = JWTAuth::parseToken()->authenticate();
+        $galerias = AlbumClient::where('client_id', $user->id)->orderBy('date','desc')->get();
+
+        return response()->json($galerias);
+
+    }
+
+    public function getPhotos($id) {
+
+        $user = JWTAuth::parseToken()->authenticate();
+        $galerias = AlbumClient::where('client_id', $user->id)->select('id')->orderBy('date','desc')->get();
+
+        foreach($galerias as $g) {
+
+            if($g->id == $id){
+
+                $photos = AlbumImagesClient::where('album_clients_id', $id)->orderBy('path','desc')->get();
+                return response()->json($photos);
+            }
+
+        }
+
+        return response()->json(['error' => 'Album Invalid'], 402);
+
+    }
+
+    public function storeSelection(Request $request) {
+
+        $photos = $request->photos;
+
+        foreach($photos as $photo) {
+            $photo = json_decode(json_encode($photo), FALSE);
+
+            $p = AlbumImagesClient::find($photo->id);
+
+            $p->select = $photo->select();
+            $p->save();
+
+
+        }
+
+        return response()->json('Seleccion Guardada');
+
+        // AlbumImagesClient::where('album_clients_id', $id)->orderBy('name','desc')->get();
 
     }
 
