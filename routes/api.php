@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+
+Route::post('login', 'ClientController@login');
+Route::get('checkAuth', 'ClientController@checkAuth');
+Route::get('albums', 'ClientController@getAlbums');
+Route::get('album/{id}', 'ClientController@getPhotos');
+Route::post('album/storeSelection', 'ClientController@storeSelection');

@@ -7,9 +7,54 @@ use App\AlbumClient;
 use App\AlbumImagesClient;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use App\User;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 class ClientController extends Controller
 {
 
+
+    public function login(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        return response()->json('holi');
+        
+        $credentials = $request->only('email', 'password');
+
+        try {
+            if(!$token = JWTAuth::attempt($credentials)){
+                return response()->json([
+                    'error' => 'Credenciales Invalidas'
+                ], 401);
+            }
+        } catch (JWTException $e) {
+            return response()->json([
+                'error' => 'Could not create token!'
+            ], 500);
+        }        
+
+        $user = Auth::user();
+
+        
+        return response()->json([
+                            'token' => $token,
+                            'user' => $user,
+                            ]);
+        
+    }
+
+    public function checkAuth() {
+        
+        $user = JWTAuth::parseToken()->authenticate();
+
+        return response()->json(['user' => $user]);
+
+    }
 
     public function index()
     {
