@@ -1,4 +1,187 @@
-a { 
-    color: #00827c;
-    font-family: 'Raleway', sans-serif;
+.nav {
+    position: fixed;
+    height: 52px;
+    width: 100%;
+    background: WHITE;
+    z-index: 4;
+    color: rgba(0, 0, 0, .87);
+    /* padding: 5px 20px; */
+    border-bottom: 1px solid rgba(34, 36, 38, .15);
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    display: flex;
+    justify-content: space-around;
+    top: 0;
+}
+
+.nav div {
+    /* padding: 0 10px 0 10px; */
+}
+
+.nav .logo img {
+    max-height: 100%;
+    padding: 5px
+}
+
+.lines p {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.links {
+    display: flex;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.menuIcon {
+    display: none;
+    color: #046abb;
+}
+
+.links div {
+    height: 100%;
+}
+
+.lines {
+    position: relative;
+}
+
+.lines::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    margin-left: -5px;
+    /* right: 0; */
+    height: 100%;
+    width: 1px;
+    background: rgba(34, 36, 38, .1);
+}
+
+.lines::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(34, 36, 38, .1);
+}
+
+.nav .logo {
+    height: 100%;
+    cursor: pointer;
+}
+
+.nav a {
+    color: rgba(0, 0, 0, .87);
+    text-decoration: none;
+}
+
+@media screen and (max-width: 750px) {
+    .nav .links {
+        display: none;
+    }
+    .nav .menuIcon {
+        display: block;
+        padding: 10px;
+    }
+}
+
+.movilView {
+    display: none;
+}
+
+
+/* Area de Aplicacion principal */
+
+.principalCard {
+    width: 100%;
+    display: block;
+    min-height: 100vh;
+    background: white;
+    position: relative;
+}
+
+@media screen and (max-width: 750px) {
+    nav {
+        height: 40px;
+    }
+    .pcView {
+        display: none;
+    }
+    .movilView {
+        display: initial;
+    }
+}
+
+.bodyMove {
+    transition: .7s ease;
+    transform: translateX(0);
+}
+
+.bodyMove.active {
+    transform: translateX(-250px);
+}
+
+.shadow {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    opacity: 0;
+    transition: .7s ease;
+    transform: translateX(0);
+    z-index: 20;
+}
+
+.shadow.display {
+    display: block;
+}
+
+.shadow.active {
+    opacity: .6;
+    transform: translateX(-250px);
+}
+
+.menuPhone {
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #1b1c1d;
+    height: 100vh;
+    width: 250px;
+}
+
+.menuPhone * {
+    color: white;
+}
+
+.menuPhone .logoPrincipal {
+    width: 88%;
+    display: block;
+    margin: 0 auto;
+}
+
+.menuPhone .img1 {
+    width: 45% !important;
+    margin-top: 25px !important;
+}
+
+.menuPhone .logoBottom {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 75px;
+}
+
+.menuPhone a {
+    border-bottom: 1px solid #4c4b4b;
+    text-decoration: none;
+    padding: 0 20px;
+    display: block;
+    margin: 12px 0;
 }

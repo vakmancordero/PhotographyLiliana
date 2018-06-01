@@ -5,39 +5,28 @@
     <link rel="icon"  href="{{ url('icono.ico')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- StyleSheets -->
-    {{--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">--}}
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/header.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('semantic/dist/semantic.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/visitor/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}">
+
     
     <!--FONTS-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     @yield('stylesheets')
 
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("a").each(function(){
-                $(this).attr("rel","external");
-            });
-        });
-    </script>
+    
     @yield('javascript-before')
 
     <title>@yield('title')</title>
 
-    <style type="text/css">
-        .ui-loader{
-            display: none;
-        }
-    </style>
+   
 
 </head>
-<body style="background-image: url('{{url('images/texture.png')}}') !important;">
+<body>
     
 <div id="loader">
         <img src='loader/loader2.png' id="loader2">
@@ -45,104 +34,55 @@
         <img src='loader/loader3.png' id="loader3">
 </div>
     
-<div id="content">
+<div class="shadow" id="shadowMenu" onclick="menuAction()"></div>
 
-    <div style="position: relative">
-        <div class="ui vertical sidebar menu right">
-            <br><br>
-            <a href="{{url('/')}}">
-                <img src="{{url('images/logo/rueda.png')}}" width="50%" style="margin: 0 auto; display: block;" >
-            </a>
-            <a href="{{url('/')}}"><img src="{{url('loader/loader3.png')}}" style="width: 80%; margin: 0 auto; display: block"></a>
-            <br><br>
+<nav class="nav bodyMove" id="bodyMove1">
 
-            <a class="item" href="{{url('/')}}">Inicio</a>
-            <a class="item" href="{{url('galerias')}}">Galerias</a>
-            <a class="item" href="{{url('blog')}}">Blog</a>
-            <a class="item" href="{{url('contacto')}}">Contacto</a>
-            <a class="item" href="http://app.lilianapineda.com/">Login</a>
-
-
-        </div>
+    <div class="logo lines">
+        <img src="http://www.lilianapineda.com/images/logo/header.png">
     </div>
 
-    {{--Menu For computer--}}
-    <div class="ui fixed menu tablet computer only grid" style="background:white;">
-        <div class="ui container" style="color: #000">
-            <a href="{{ url('/')}}" class="header item">
-                <img class="logo" src="{{url("images/logo/header.png")}}" style="width: 150px">
-            </a>
+    <div class="links">
 
-            <div class="right item" style="padding: 0px;" id="computerMenu">
-                <a href="#" class="item">Inicio</a>
-                <div class="ui simple dropdown item">
-                    Portafolio <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <a class="item" href="{{url('portafolio/bodas')}}">Bodas</a>
-                        <a class="item" href="{{url('portafolio/xv')}}">Xv</a>
-                        <a class="item" href="{{url('portafolio/sesiones-especiales')}}">Sesiones Especiales</a>
-                    </div>
-                </div>
-                <a href="#" class="item">Blog</a>
-                <a href="#" class="item">Contacto</a>
-                <a href="http://app.lilianapineda.com/" class="item">Login</a>
-                
-            </div>
-        </div>
+        <a href="{{url('/')}}" ><p>Inicio</p></a>
+        <a href="" ><p>Portafolio</p></a>
+        <a href="{{url('blog')}}" ><p>Blog</p></a>
+        <a href="{{url('contacto')}}" ><p>Contacto</p></a>
+        <a href="http://app.lilianapineda.com/" ><p>Login</p></a>
+
     </div>
 
-{{--Menu for mobile--}}
-    <div class="ui fixed menu mobile only grid" style="padding-top: 0;">
-        <a href="{{ url('/')}}" class="header item">
-            <img class="logo" src="{{url('images/logo/header.png')}}" style="width: 150px">
-        </a>
-        <div class="right menu">
-            <div class="item">
-                <a  id="toggle" class="mobile only ">
-                    <i class="sidebar icon"></i>
-                </a>
-            </div>
-        </div>
+    <div class="menuIcon lines" onclick="menuAction()">
+        <i class="material-icons">menu</i>
     </div>
 
 
+</nav>
+
+
+<div class="menuPhone">
+    <img class="logoPrincipal img1" src="http://www.lilianapineda.com/images/logo/rueda.png">
+    <img class="logoPrincipal" src="http://www.lilianapineda.com/loader/loader3.png">
+
+    <div class="moveLinks">
+
+        <a href="{{url('/')}}" ><p>Inicio</p></a>
+        <a href="" ><p>Portafolio</p></a>
+        <a href="{{url('blog')}}" ><p>Blog</p></a>
+        <a href="{{url('contacto')}}" ><p>Contacto</p></a>
+        <a href="http://app.lilianapineda.com/" ><p>Login</p></a>
+    </div>
+
+    
+</div>
+
+<div class="principalCard" id="bodyMove2">
+    
     @yield('content')
 
     <div class="ui inverted vertical footer segment">
         <div class="ui center aligned container">
-            <div class="ui stackable inverted divided grid">
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 1</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 2</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="three wide column">
-                    <h4 class="ui inverted header">Group 3</h4>
-                    <div class="ui inverted link list">
-                        <a href="#" class="item">Link One</a>
-                        <a href="#" class="item">Link Two</a>
-                        <a href="#" class="item">Link Three</a>
-                        <a href="#" class="item">Link Four</a>
-                    </div>
-                </div>
-                <div class="seven wide column">
-                    <h4 class="ui inverted header">Footer Header</h4>
-                    <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-                </div>
-            </div>
+            
             <div class="ui inverted section divider"></div>
             <img src="https://semantic-ui.com/examples/assets/images/logo.png" class="ui centered mini image">
             <div class="ui horizontal inverted small divided link list">
@@ -153,14 +93,20 @@
             </div>
         </div>
     </div>
-</div>
+
+</div> 
+
+
+
+
+    
+
+   
+
     <!-- JavaScript -->
-    {{--<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>--}}
-    {{--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>--}}
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-    <script src="{{ asset('js/visitor/smoothScroll.js') }}"></script>
-    <script src="{{ asset('semantic/dist/semantic.min.js'   ) }}"></script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://www.residencialchulavista.com/js/visitor/SmoothScroll.js"></script>
+    
     <script src="{{ asset('loader/loader.js') }}"></script>
     <script src="{{ asset('js/visitor/menu.js') }}"></script>
     @yield('script')

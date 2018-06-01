@@ -134,8 +134,7 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="{{ asset('semantic/dist/semantic.min.js') }}"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
-<script src="{{ asset('js/visitor/smoothScroll.js') }}"></script>
+<script src="http://www.residencialchulavista.com/js/visitor/SmoothScroll.js"></script>
 <script src="{{ asset('js/visitor/menu.js') }}"></script>
 
 @yield('script')
