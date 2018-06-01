@@ -68,10 +68,16 @@ Route::get('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@createGa
 Route::post('admin/clientes/{id}/crearGaleria' , 'AlbumClientsController@storeGallery');
 Route::get('admin/galleryClient/{id}/upload', 'AlbumClientsController@getUploadView');
 Route::post('admin/galleryClient/{id}/upload', 'AlbumClientsController@saveImages');
+
+Route::get('admin/galleryClient/{id}/selected', 'AlbumClientsController@getSelectedBlade');
+Route::get('admin/galleryClient/{id}/getImagesSelected', 'AlbumClientsController@getSelectedImages');
+
 Route::get('admin/galleryClient/{id}', 'AlbumClientsController@getGallery');
 Route::get('admin/galleryClient/{id}/getImages', 'AlbumClientsController@getImages');
 Route::get('admin/galleryClient/deleteImage/{id}', 'AlbumClientsController@deleteImage');
 Route::get('admin/galleryClient/destroyGallery/{id}', 'AlbumClientsController@destroyGallery');
+
+// Route::get('reorganize', 'AlbumClientsController@reorganizeAll');
 
 //Area de Clientes
 Route::group(['middleware' => 'client'], function () {

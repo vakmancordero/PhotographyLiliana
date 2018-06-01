@@ -38,6 +38,21 @@ class AlbumClientsController extends Controller
         return view('admin/userGallery/show')->with(['gallery' => $gallery, 'images' => $images, 'client' => $user]);
     }
 
+    public function getSelectedBlade($id) {
+        $gallery = AlbumClient::find($id);
+        $user = User::find($gallery->client_id);
+        $images = AlbumImagesClient::where('album_clients_id', $gallery->id)->get();
+        return view('admin/userGallery/selectedImages')
+        ->with(['gallery' => $gallery, 'images' => $images, 'client' => $user]);
+    }
+
+    public function getSelectedImages($id) {
+        return AlbumImagesClient::where([
+                    ['album_clients_id', $id],
+                    ['select', 1]
+                    ])->get();
+    }
+
     public function getImages($id)
     {
         return AlbumImagesClient::where('album_clients_id', $id)->get();
@@ -207,5 +222,56 @@ class AlbumClientsController extends Controller
         Storage::disk('client')->delete('computer/'.$img->path);
         Storage::disk('client')->delete('mov/'.$img->path);
         $img->delete();
+    }
+
+    public function reorganizeAll() {
+        
+        $albums = AlbumClient::all();
+
+        foreach($albums as $album) {
+
+        $id = $album->id;
+
+        $result = File::makeDirectory(directories::getClientPath() . $id);
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/mov');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/computer');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/app');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/store');
+
+        $patoFrom1 = directories::getClientPath() . 'principal_' .$album->img;
+        $patoFrom2 = directories::getClientPath() . 'secundaria_' .$album->img;
+
+        $patoTo1 = directories::getClientPath() . $id . '/principal_' . $album->img;
+        $patoTo2 = directories::getClientPath() . $id . '/secundaria_' . $album->img;
+        
+        File::move($patoFrom1, $patoTo1);
+        File::move($patoFrom2, $patoTo2);
+
+        $photos = AlbumImagesClient::where('album_clients_id', $id)->get(); {
+            
+            foreach($photos as $pho) {
+
+                $patoFrom1 = directories::getClientPath() . '/mov/' . $pho->path;
+                $patoFrom2 = directories::getClientPath() . '/computer/' . $pho->path;
+                $patoFrom3 = directories::getClientPath() . '/app/' . $pho->path;
+
+                $patoTo1 = directories::getClientPath() . $pho->album_clients_id . '/mov/' . $pho->path;
+                $patoTo2 = directories::getClientPath() . $pho->album_clients_id . '/computer/' . $pho->path;
+                $patoTo3 = directories::getClientPath() . $pho->album_clients_id . '/app/' . $pho->path;
+
+                File::move($patoFrom1, $patoTo1);
+                File::move($patoFrom2, $patoTo2);
+                File::move($patoFrom3, $patoTo3);
+
+            }
+
+        }
+
+
+    
+        }
+
+        return 'archivos reorganizados';
+
     }
 }

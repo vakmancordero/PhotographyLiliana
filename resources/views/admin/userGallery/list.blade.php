@@ -27,7 +27,11 @@
                         <button class="ui blue mini button">Administrar</button>
                     </a>
 
-
+                    @if($n->status == 2)
+                        <a href="{{url('admin/galleryClient/' . $n->id  . '/selected')}}">
+                            <button class="ui yellow mini button">Ver Fotos seleccionadas</button>
+                        </a>
+                    @endif
 
                     <a href="{{url('admin/galleryClient/destroyGallery/' . $n->id )}}">
                         <button class="ui red mini button" onsubmit="eliminar({{$n->id}})">Eliminar</button>

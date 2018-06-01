@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('script')
-    <script type="text/javascript" src="{{ asset('js/appAdmin/ClientGetImageGallery.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/appAdmin/ClientDeleteImage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/appAdmin/ClientGetSelectedImages.js') }}"></script>
 
     <script src="{{url('js/appAdmin/photosFacebook.js')}}"></script>
 
@@ -16,6 +15,7 @@
 @section('content')
 
     <h1> {{ $gallery->name }}</h1>
+    <h5>Fotos Seleccionadas</h5>
     <img src="{{url('images/aplication/clients/'.$gallery->id.'/principal_'.$gallery->img)}}" style="width: 50%">
 
     <br>
