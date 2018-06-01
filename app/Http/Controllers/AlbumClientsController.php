@@ -10,6 +10,7 @@ use App\AlbumImagesClient;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\directories;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 class AlbumClientsController extends Controller
 {
@@ -58,28 +59,7 @@ class AlbumClientsController extends Controller
 
         $img = $request->file('image');
 
-        $path = time() . '.' . $img->getClientOriginalExtension();
-
-        $img = Image::make($img);
-
-        if ($img->width() >= $img->height()) {
-
-            $img->resize(1300, null, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $img->save(directories::getClientPath() . "principal_" . $path);
-
-            $img->fit(400, 400, function ($constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            });
-            $img->save(directories::getClientPath() . "secundaria_" . $path);
-
-        } else {
-            return back()->withInput();
-        }
-
+        $path = $img->getClientOriginalName();
 
         $album = new AlbumClient();
 
@@ -90,6 +70,35 @@ class AlbumClientsController extends Controller
         $album->date = $request->date;
 
         $album->save();
+
+        $id = $album->id;
+
+        $result = File::makeDirectory(directories::getClientPath() . $id);
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/mov');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/computer');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/app');
+        $result = File::makeDirectory(directories::getClientPath() . $id . '/store');
+        
+
+        $img = Image::make($img);
+
+        if ($img->width() >= $img->height()) {
+
+            $img->resize(1300, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save(directories::getClientPath() . $id . "/principal_" . $path);
+
+            $img->fit(400, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            });
+            $img->save(directories::getClientPath() . $id ."/secundaria_" . $path);
+
+        } else {
+            return back()->withInput();
+        }
 
         return redirect('admin/galleryClient/' . $album->id . "/upload");
     }
@@ -108,26 +117,38 @@ class AlbumClientsController extends Controller
 
         $img = $request->file('image');
 
+        //Verify Process uNIQUE FOR ALBUM
+        $verify = AlbumImagesClient::where([
+                    ['path', $img->getClientOriginalName() ],
+                    ['album_clients_id', $id ]
+                    ])->first();
 
-        $file_route = $img->getClientOriginalName(). "-" .time() . '.' . $img->getClientOriginalExtension();
+        
+
+        if(isset($verify->id))  return response()->json(['error' => 'File Duplicate'], 403);
+
+        $file_route = $img->getClientOriginalName();
 
         $imagen1 = Image::make($request->file('image'));
         $mask = Image::make(directories::getMaskPath() . 'waterMark.png');
 
-        if ($imagen1->width() >= $imagen1->height()) {
+        $imagen1->save(directories::getClientPath() . $id .'/store/' . $file_route);
+
+        if ($imagen1->width() >= $imagen1->height()) {            
+
             $imagen1->resize(1000, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
             $imagen1->insert($mask, 'bottom-right' ,  10, 10);
-            $imagen1->save(directories::getClientPath() . 'computer/' . $file_route);
+            $imagen1->save(directories::getClientPath() . $id .'/computer/' . $file_route);
 
             $imagen1->resize(500, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
             });
 
-            $imagen1->save(directories::getClientPath() . 'mov/' . $file_route);
+            $imagen1->save(directories::getClientPath() . $id .'/mov/' . $file_route);
 
 
 
@@ -138,7 +159,7 @@ class AlbumClientsController extends Controller
             });
 
             $imagen1->insert($mask, 'bottom-right' ,  10, 10);
-            $imagen1->save(directories::getClientPath() . 'computer/' . $file_route);
+            $imagen1->save(directories::getClientPath() . $id .'/computer/' . $file_route);
 
 
             $imagen1->resize(null, 500, function ($constraint) {
@@ -146,12 +167,12 @@ class AlbumClientsController extends Controller
                 $constraint->upsize();
             });
 
-            $imagen1->save(directories::getClientPath() . 'mov/' . $file_route);
+            $imagen1->save(directories::getClientPath() . $id .'/mov/' . $file_route);
 
         }
 
         $imagen1->fit(150, 150);
-        $imagen1->save(directories::getClientPath() . 'app/' . $file_route);
+        $imagen1->save(directories::getClientPath() . $id .'/app/' . $file_route);
 
         $imagen = new AlbumImagesClient();
         $imagen->album_clients_id = $id;
@@ -166,16 +187,11 @@ class AlbumClientsController extends Controller
     public function destroyGallery($id)
     {
         $galeria = AlbumClient::find($id);
-        $imagenes = AlbumImagesClient::where('album_clients_id', $galeria->id)->get();
-
-        foreach($imagenes as $img){
-            $this->destroyImage($img);
-        }
-
-        Storage::disk('client')->delete('principal_'.$galeria->img);
-        Storage::disk('client')->delete('secundaria_'.$galeria->img);
+        AlbumImagesClient::where('album_clients_id', $galeria->id)->delete();
+        File::deleteDirectory(directories::getClientPath() . $galeria->id);
 
         $galeria->delete();
+
         return back();
     }
 

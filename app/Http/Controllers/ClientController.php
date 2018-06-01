@@ -88,11 +88,10 @@ class ClientController extends Controller
 
         $photos = $request->photos;
 
-
         AlbumImagesClient::where('album_clients_id', $request->album_id)->update(['select' => 0]);
 
         foreach($photos as $photo) {
-            
+
             $photo = json_decode(json_encode($photo), FALSE);
 
             if($photo->select == true) {
