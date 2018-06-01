@@ -16,7 +16,7 @@
 @section('content')
 
     <h1> {{ $gallery->name }}</h1>
-    <img src="{{url('images/aplication/clients/principal_'.$gallery->img)}}" style="width: 50%">
+    <img src="{{url('images/aplication/clients/.$gallery->id.'/principal_'.$gallery->img)}}" style="width: 50%">
 
     <br>
 

@@ -11,25 +11,27 @@ Dropzone.options.addImagesForm = {
 
     paramName: 'image',
     maxFilesize: 30,
-    parallelUploads:1,
+    parallelUploads: 1,
     acceptedFiles: '.jpg, .jpeg, .gif, .png',
     addRemoveLinks: true,
-    success: function(file, response){
+    success: function(file, response) {
+
+        var id = response.album_clients_id;
         console.log(file.name);
 
         file.serverImageId = response.id;
 
         console.log(response);
 
-        var url1 = homePath + "/images/aplication/clients/app/" + response.path;
-        var url2 = homePath + "/images/aplication/clients/computer/" + response.path;
+        var url1 = homePath + "/images/aplication/clients/" + id + "/app/" + response.path;
+        var url2 = homePath + "/images/aplication/clients/" + id + "/computer/" + response.path;
 
         $('<a/>')
             .append($('<div>')
-                .prop({"style" : "background-image: url(" + url1 + ");" , 'id' : 'photos'})
+                .prop({ "style": "background-image: url(" + url1 + ");", 'id': 'photos' })
                 .append($('<i>')
-                    .prop({class:'trash icon' , id:'trash'+response.id})
-                    .attr('onclick', "deleteLB("+response.id+")")))
+                    .prop({ class: 'trash icon', id: 'trash' + response.id })
+                    .attr('onclick', "deleteLB(" + response.id + ")")))
             .prop('href', url2)
             .prop('title', response.name)
             .prop('id', 'linkElement')
@@ -78,7 +80,7 @@ Dropzone.options.addImagesForm = {
 
 };
 
-$(function () {
+$(function() {
 
     $("form.deleteImageForm").on("submit", function(event) {
 
@@ -89,7 +91,7 @@ $(function () {
 
         alertify.confirm("Eliminar imagen...", "Está seguro de eliminar la imagen?.",
 
-            function(){
+            function() {
 
                 $.ajax({
                     type: 'GET',
@@ -100,7 +102,7 @@ $(function () {
 
                         element = element.parent().parent();
 
-                        element.fadeOut(500, function(){
+                        element.fadeOut(500, function() {
                             element.remove();
                         });
 
@@ -123,7 +125,7 @@ $(function () {
                 });
 
             },
-            function(){
+            function() {
                 alertify.error('Eliminación cancelada');
             }
 
@@ -133,7 +135,7 @@ $(function () {
 
 });
 
-function restartFailUploads(){
+function restartFailUploads() {
     var dropzoneFilesCopy = dropzone.files.slice(0);
     dropzone.removeAllFiles();
     $.each(dropzoneFilesCopy, function(file) {

@@ -19,7 +19,7 @@
             @foreach($galerias as $n)
                 <div id="album">
                     <a href="{{url('admin/galleryClient/'.$n->id)}}">
-                        <img src="{{url('images/aplication/clients/secundaria_'.$n->img)}}" >
+                        <img src="{{url('images/aplication/clients/'.$n->id.'/secundaria_'.$n->img)}}" >
                         <h4>{{$n->name}}</h4>
                     </a>
                     <h5>{{$n->date}}</h5>

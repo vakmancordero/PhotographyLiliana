@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
 
     var curriculumId = $('#galleryId').val();
     var homePath = $('#homePath').val();
@@ -7,19 +7,20 @@ $(function () {
         url: homePath + '/admin/galleryClient/' + curriculumId + '/getImages',
         type: "GET",
         async: true,
-    }).done(function (result) {
+    }).done(function(result) {
 
-        result.forEach(function (item, index) {
+        result.forEach(function(item, index) {
 
-            var url1 = homePath + "/images/aplication/clients/app/" + item.path;
-            var url2 = homePath + "/images/aplication/clients/computer/" + item.path;
+            var id = item.album_clients_id;
+            var url1 = homePath + "/images/aplication/clients/" + id + "/app/" + item.path;
+            var url2 = homePath + "/images/aplication/clients/" + id + "/computer/" + item.path;
 
             $('<a/>')
                 .append($('<div>')
-                    .prop({"style" : "background-image: url(" + url1 + ");" , 'id' : 'photos'})
+                    .prop({ "style": "background-image: url(" + url1 + ");", 'id': 'photos' })
                     .append($('<i>')
-                        .prop({class:'trash icon' , id:'trash'+item.id})
-                        .attr('onclick', "deleteLB("+item.id+")")))
+                        .prop({ class: 'trash icon', id: 'trash' + item.id })
+                        .attr('onclick', "deleteLB(" + item.id + ")")))
                 .prop('href', url2)
                 .prop('title', item.name)
                 .prop('id', 'linkElement')
