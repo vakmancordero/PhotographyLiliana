@@ -22,7 +22,7 @@ $(function() {
                         .prop({ class: 'trash icon', id: 'trash' + item.id })
                         .attr('onclick', "deleteLB(" + item.id + ")")))
                 .prop('href', url2)
-                .prop('title', item.name)
+                .prop('title', item.path)
                 .prop('id', 'linkElement')
                 .attr('data-gallery', '#blueimp-gallery-links')
                 .appendTo($("#links"));
