@@ -60,10 +60,7 @@
             <a class="item" href="{{url('galerias')}}">Galerias</a>
             <a class="item" href="{{url('blog')}}">Blog</a>
             <a class="item" href="{{url('contacto')}}">Contacto</a>
-            <a class="item" href="{{url('login')}}">Login</a>
-            @if(Auth::user())
-                <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>
-            @endif
+            <a class="item" href="http://app.lilianapineda.com/">Login</a>
 
 
         </div>
@@ -88,10 +85,8 @@
                 </div>
                 <a href="#" class="item">Blog</a>
                 <a href="#" class="item">Contacto</a>
-                <a href="{{url('login')}}" class="item">Login</a>
-                @if(Auth::user())
-                    <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>
-                @endif
+                <a href="http://app.lilianapineda.com/" class="item">Login</a>
+                
             </div>
         </div>
     </div>
@@ -151,7 +146,7 @@
             <div class="ui inverted section divider"></div>
             <img src="https://semantic-ui.com/examples/assets/images/logo.png" class="ui centered mini image">
             <div class="ui horizontal inverted small divided link list">
-                <a class="item" href="#">Site Map</a>
+                <a class="item" href="{{ url('login')}}">Login Admin</a>
                 <a class="item" href="#">Contact Us</a>
                 <a class="item" href="#">Terms and Conditions</a>
                 <a class="item" href="#">Privacy Policy</a>

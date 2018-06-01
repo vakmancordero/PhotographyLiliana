@@ -36,10 +36,8 @@
         <a class="item" href="{{url('galerias')}}">Galerias</a>
         <a class="item" href="{{url('blog')}}">Blog</a>
         <a class="item" href="{{url('contacto')}}">Contacto</a>
-        <a class="item" href="{{url('login')}}">Login</a>
-        @if(Auth::user())
-            <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>
-        @endif
+        <a class="item" href="http://app.lilianapineda.com/">Login</a>
+       
     </div>
 </div>
 
@@ -62,10 +60,8 @@
             </div>
             <a href="{{url('blog')}}" class="item">Blog</a>
             <a href="{{url('contacto')}}" class="item">Contacto</a>
-            <a href="{{url('login')}}" class="item">Login</a>
-            @if(Auth::user())
-                <a href="{{ url('logout') }}" class="item">Cerrar Sesión</a>
-            @endif
+            <a href="http://app.lilianapineda.com/" class="item">Login</a>
+            
         </div>
     </div>
 </div>
@@ -86,6 +82,8 @@
 
     @yield('content')
 
+
+<a class="item" href="{{ url('login')}}">Login Admin</a>
     {{--<div class="ui inverted vertical footer segment">--}}
         {{--<div class="ui center aligned container">--}}
             {{--<div class="ui stackable inverted divided grid">--}}

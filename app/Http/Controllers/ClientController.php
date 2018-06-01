@@ -68,14 +68,14 @@ class ClientController extends Controller
     public function getPhotos($id) {
 
         $user = JWTAuth::parseToken()->authenticate();
-        $galerias = AlbumClient::where('client_id', $user->id)->select('id')->orderBy('date','desc')->get();
+        $galerias = AlbumClient::where('client_id', $user->id)->orderBy('date','desc')->get();
 
         foreach($galerias as $g) {
 
             if($g->id == $id){
 
                 $photos = AlbumImagesClient::where('album_clients_id', $id)->orderBy('path','desc')->get();
-                return response()->json($photos);
+                return response()->json([ 'photos' => $photos, 'album' => $g]);
             }
 
         }
@@ -88,16 +88,24 @@ class ClientController extends Controller
 
         $photos = $request->photos;
 
+
+        AlbumImagesClient::where('album_clients_id', $request->album_id)->update(['select' => 0]);
+
         foreach($photos as $photo) {
+            
             $photo = json_decode(json_encode($photo), FALSE);
 
-            $p = AlbumImagesClient::find($photo->id);
-
-            $p->select = $photo->select();
-            $p->save();
-
-
+            if($photo->select == true) {
+                $p = AlbumImagesClient::find($photo->id);
+                $p->select = $photo->select;
+                $p->save();
+            }
+            
         }
+
+        $album = AlbumClient::find($request->album_id);
+        $album->status = 2;
+        $album->save();
 
         return response()->json('Seleccion Guardada');
 
@@ -113,6 +121,7 @@ class ClientController extends Controller
     }
 
     public function getAlbum($id){
+        
         $galeria = AlbumClient::find($id);
 
         return view('client/gallery')->with('galeria', $galeria);
