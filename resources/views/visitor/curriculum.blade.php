@@ -1,4 +1,4 @@
-@extends('layouts.visitor2')
+@extends('layouts.visitor')
 
 @section('stylesheets')
 
@@ -23,34 +23,29 @@
 @section('content')
 
 <div style=" background-image: url('{{url('images/aplication/curriculum/principal_'. $portafolio->image )}}')" id="landing"></div>
-<div>
-    <div id="albumContent">
-        <h1>{{$portafolio->name}}</h1>
-        <img src="{{url('images/aplication/curriculum/principal_'. $portafolio->image )}}" class="portafolioImg">
-        <p>{{ $portafolio->description }}</p>
 
-        <input type="hidden" value="{{$portafolio->id}}" id="curriculumId">
-        <input type="hidden" value="{{url('/')}}" id="homePath">
+<div id="albumContent">
+    <h1>{{$portafolio->name}}</h1>
+    <img src="{{url('images/aplication/curriculum/principal_'. $portafolio->image )}}" class="portafolioImg">
+    <p>{{ $portafolio->description }}</p>
 
-        <div id="links" class="photoContainer">
-            {{--@foreach($images as $n)--}}
-                {{--<a class="pint" href="{{url('images/aplication/curriculum/computer/'.$n->path)}}" title="Bodas" data-gallery='#blueimp-gallery-links'>--}}
-                    {{--<img src="{{url('images/aplication/curriculum/mov/'.$n->path)}}" width="100%">--}}
-                {{--</a>--}}
-            {{--@endforeach--}}
-        </div>
+    <input type="hidden" value="{{$portafolio->id}}" id="curriculumId">
+    <input type="hidden" value="{{url('/')}}" id="homePath">
 
-        <div id="blueimp-gallery" class="blueimp-gallery">
-            <div class="slides"></div>
-            <h3 class="title"></h3>
-            <a class="prev">‹</a>
-            <a class="next">›</a>
-            <a class="close">×</a>
-            <a class="play-pause"></a>
-            <ol class="indicator"></ol>
-        </div>
+    <div id="links" class="photoContainer">
+    </div>
+
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <div class="slides"></div>
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
     </div>
 </div>
+
 @stop
 
 

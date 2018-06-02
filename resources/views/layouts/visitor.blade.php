@@ -29,9 +29,12 @@
 <body>
     
 <div id="loader">
-        <img src='loader/loader2.png' id="loader2">
-        <img src='loader/loader1.png' id="loader1" class="rotating">
-        <img src='loader/loader3.png' id="loader3">
+    <div class="loaderContainer">
+        <img src='{{ url("loader/loader2.png") }}' id="loader2">
+        <img src='{{ url("loader/loader1.png") }}' id="loader1" class="rotating">
+        <img src='{{ url("loader/loader3.png") }}' id="loader3">
+    </div>
+        
 </div>
     
 <div class="shadow" id="shadowMenu" onclick="menuAction()"></div>
@@ -44,11 +47,11 @@
 
     <div class="links">
 
-        <a href="{{url('/')}}" ><p>Inicio</p></a>
-        <a href="" ><p>Portafolio</p></a>
-        <a href="{{url('blog')}}" ><p>Blog</p></a>
-        <a href="{{url('contacto')}}" ><p>Contacto</p></a>
-        <a href="http://app.lilianapineda.com/" ><p>Login</p></a>
+        <a class="lines" href="{{url('/')}}" ><p>Inicio</p></a>
+        <a class="lines" href="{{url('portafolio')}}" ><p>Portafolio</p></a>
+        <a class="lines" href="{{url('blog')}}" ><p>Blog</p></a>
+        <a class="lines" href="{{url('contacto')}}" ><p>Contacto</p></a>
+        <a class="lines" href="http://app.lilianapineda.com/" ><p>Login</p></a>
 
     </div>
 
@@ -61,7 +64,7 @@
 
 
 <div class="menuPhone">
-    <img class="logoPrincipal img1" src="http://www.lilianapineda.com/images/logo/rueda.png">
+    <img class="  img1" src="http://www.lilianapineda.com/images/logo/rueda.png">
     <img class="logoPrincipal" src="http://www.lilianapineda.com/loader/loader3.png">
 
     <div class="moveLinks">
@@ -84,7 +87,7 @@
         <div class="ui center aligned container">
             
             <div class="ui inverted section divider"></div>
-            <img src="https://semantic-ui.com/examples/assets/images/logo.png" class="ui centered mini image">
+            
             <div class="ui horizontal inverted small divided link list">
                 <a class="item" href="{{ url('login')}}">Login Admin</a>
                 <a class="item" href="#">Contact Us</a>

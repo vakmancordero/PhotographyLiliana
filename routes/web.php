@@ -2,6 +2,7 @@
 
 Route::get('/', 'VisitorController@index');
 
+Route::get('portafolio', 'VisitorController@allPortafolios' );
 Route::get('portafolio/{name}', 'VisitorController@portafolio' );
 Route::get('portafolio/fotos/{id}', 'VisitorController@curriculumPhotos' );
 

@@ -67,6 +67,10 @@
     background: rgba(34, 36, 38, .1);
 }
 
+.links .lines::before {
+    margin-left: -.4px;
+}
+
 .nav .logo {
     height: 100%;
     cursor: pointer;

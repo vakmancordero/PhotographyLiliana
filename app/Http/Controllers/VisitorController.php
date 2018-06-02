@@ -24,16 +24,30 @@ class VisitorController extends Controller
         }
         return view('visitor/index')->with(['curriculum' => $curriculum, 'blogs' => $blogs]);
     }
+
+    public function allPortafolios() {
+
+        $portafolios = Curriculum::orderBy('id')->get();
+
+        foreach($portafolios as $n){
+            $n->url = str_replace(' ', '-', $n->name);
+            
+        }
+
+        return view('visitor/portafolios')->with(['portafolios' => $portafolios]);
+
+    }
+
     public function portafolio($name){
 
         $name = str_replace('-', ' ', $name);
 
-        $curriculumActual = Curriculum::where('name' , $name)->first();
+        $curriculumActual = Curriculum::where('name', $name)->first();
 
         return view('visitor/curriculum')->with(["portafolio" => $curriculumActual ]);
     }
     public function curriculumPhotos($id){
-        $photos = CurriculumImage::where('curriculum_id', $id)->get();
+        $photos = CurriculumImage::where('curriculum_id', $id)->orderBy('id')->get();        
         return $photos;
     }
 

@@ -50,8 +50,8 @@
             <div class="slider-piece centrar" 
                 style=" background-image: url('{{ url('images/sliderIndex/7.jpg') }}') "></div>
 
-            <div class="slider-piece" 
-                style=" background-image: url('{{ url('images/sliderIndex/8.jpg') }}') "></div>
+            <!-- <div class="slider-piece" 
+                style=" background-image: url('{{ url('images/sliderIndex/8.jpg') }}') "></div> -->
 
         </div>
         <div class="indicators left" onclick="sliderBefore()"><i class="material-icons" >keyboard_arrow_left</i></div>
@@ -110,34 +110,7 @@
         </div>
     </div>
 
-    {{--<br><br><br>--}}
-    {{--<br><br><br>--}}
-    {{--<br><br><br>--}}
-    {{--<br><br><br>--}}
-
-    {{--<div id="why" class="ui vertical stripe segment">--}}
-        {{--<div class="ui middle aligned stackable grid container">--}}
-            {{--<div class="row">--}}
-                {{--<div class="eight wide left floated column">--}}
-                    {{--<img src="http://candlelabs.com.mx/images/home/home.svg" class="ui large bordered rounded image">--}}
-                {{--</div>--}}
-                {{--<div class="eight wide column">--}}
-                    {{--<h3 class="ui header">Tu día a día con en tu ordenador</h3>--}}
-                    {{--<p>Las aplicaciones de escritorio brindan la facilidad de acceso cuando inicias tu ordenador, el sistema siempre estará listo para ti sin necesidad de una conexión estricta a internet.</p>--}}
-                    {{--<h3 class="ui header">Agiliza tus actividades e integra gran variedad de herramientas</h3>--}}
-                    {{--<p>Los sistemas de escritorio abren la posibilidad de integración con herramientas con las que ya estas acostumbrado, permite hacer uso de dispositivos con los que tu ordenador cuenta y optimiza los recursos para no realientizar tu sistema.</p>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-            {{--<div class="row">--}}
-                {{--<div class="center aligned column">--}}
-                    {{--<a href="/contacto" class="ui huge button">Obtener una aplicación hoy!</a>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-
-</div>
+   
 @stop
 
 
