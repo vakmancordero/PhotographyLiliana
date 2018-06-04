@@ -95,19 +95,21 @@
         <br><br>
         <div class="blogCardsSection">
             @foreach($blogs as $n)
-            <div class="blog">
-                <a href="{{url('blog/' . $n->link)}}">
-                    <div style="background-image: url('{{url('images/aplication/blog/' . $n->image)}}')"></div>
+            <a class="blog" href="{{url('blog/' . $n->link)}}">
                     <img src="{{url('images/aplication/blog/' . $n->image)}}">
                     <h5>{{$n->name}}</h5>
-                </a>
-                <h5>{{$n->date }}</h5>
-            </div>
+                    <h5>{{$n->date }}</h5>
+            </a>
             @endforeach
         </div>
         <div class="blogMas">
             <p>Mas historias</p>
         </div>
+    </div>
+
+    <h2 class="centerText">Ubicación</h2>
+    <div class="ubicacion">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10806.77158110619!2d-92.6423089161543!3d16.73828745570113!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6eb5f0c2adb31861!2sLiliana+Pineda+Fotografia!5e0!3m2!1sen!2smx!4v1527955257928" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 
    

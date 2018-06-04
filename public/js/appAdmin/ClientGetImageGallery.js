@@ -12,6 +12,9 @@ $(function() {
         result.forEach(function(item, index) {
 
             var id = item.album_clients_id;
+
+            item.path = item.path.split(' ').join('%20');
+
             var url1 = homePath + "/images/aplication/clients/" + id + "/app/" + item.path;
             var url2 = homePath + "/images/aplication/clients/" + id + "/computer/" + item.path;
 

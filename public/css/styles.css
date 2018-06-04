@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,700|Great+Vibes|Pompiere|Song+Myung');
+
+/* 
+font-family: 'Song Myung', serif;       textos tipo maquina
+font-family: 'Dosis', sans-serif;       textos sin bordes no serios
+font-family: 'Great Vibes', cursive;    cursiva chida
+font-family: 'Pompiere', cursive;       como escrita a mano */
+
+.centerText {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Pompiere', cursive !important;
+}
+
+* {
+    font-family: 'Song Myung', serif;
+    color: rgb(47, 47, 47);
+}
+
+.text2 {
+    font-family: 'Dosis', sans-serif;
+}
+
+.manoText {
+    font-family: 'Great Vibes', cursive !important;
+}

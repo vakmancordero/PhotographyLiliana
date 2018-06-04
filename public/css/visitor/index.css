@@ -160,3 +160,21 @@
         padding-right: 0;
     }
 }
+
+.everything {
+    background: white url(http://www.lilianapineda.com/images/texture.png);
+}
+
+.ubicacion {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    height: 50vh;
+}
+
+.ubicacion iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}

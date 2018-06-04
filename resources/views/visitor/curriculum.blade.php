@@ -32,7 +32,9 @@
     <input type="hidden" value="{{$portafolio->id}}" id="curriculumId">
     <input type="hidden" value="{{url('/')}}" id="homePath">
 
-    <div id="links" class="photoContainer">
+    <div class="paddingContainer">
+        <div id="links" class="photoContainer">
+        </div>
     </div>
 
     <div id="blueimp-gallery" class="blueimp-gallery">

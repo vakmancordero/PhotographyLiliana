@@ -104,6 +104,7 @@
     min-height: 100vh;
     background: white;
     position: relative;
+    top: 0;
 }
 
 @media screen and (max-width: 750px) {
@@ -172,7 +173,8 @@
 
 .menuPhone .img1 {
     width: 45% !important;
-    margin-top: 25px !important;
+    margin: 25px auto 10px auto !important;
+    display: block;
 }
 
 .menuPhone .logoBottom {

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/visitor/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('loader/loader.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('css/main.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('css/styles.css') }}">
 
     
     <!--FONTS-->
@@ -70,7 +71,7 @@
     <div class="moveLinks">
 
         <a href="{{url('/')}}" ><p>Inicio</p></a>
-        <a href="" ><p>Portafolio</p></a>
+        <a href="{{ url('/portafolio') }}" ><p>Portafolio</p></a>
         <a href="{{url('blog')}}" ><p>Blog</p></a>
         <a href="{{url('contacto')}}" ><p>Contacto</p></a>
         <a href="http://app.lilianapineda.com/" ><p>Login</p></a>

@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 use App\Http\Controllers\directories;
 use Illuminate\Support\Facades\Storage;
 use File;
+use Input;
 
 class AlbumClientsController extends Controller
 {
@@ -65,6 +66,7 @@ class AlbumClientsController extends Controller
 
     public function storeGallery($id, Request $request)
     {
+
         $this->validate($request, [
             'name' => 'required',
             'image' => 'required|image',
@@ -126,6 +128,9 @@ class AlbumClientsController extends Controller
 
     public function saveImages($id, Request $request)
     {
+        // return response()->json($request);
+        // return response()->json($request->all());
+
         $this->validate($request, [
             'image' => 'required|image'
         ]);
@@ -218,10 +223,12 @@ class AlbumClientsController extends Controller
 
     public function destroyImage($img) {
 
-        Storage::disk('client')->delete('app/'.$img->path);
-        Storage::disk('client')->delete('computer/'.$img->path);
-        Storage::disk('client')->delete('mov/'.$img->path);
+        Storage::disk('client')->delete( $img->album_clients_id.'app/'.$img->path);
+        Storage::disk('client')->delete( $img->album_clients_id.'computer/'.$img->path);
+        Storage::disk('client')->delete( $img->album_clients_id.'mov/'.$img->path);
+        Storage::disk('client')->delete( $img->album_clients_id.'store/'.$img->path);
         $img->delete();
+        
     }
 
     public function reorganizeAll() {

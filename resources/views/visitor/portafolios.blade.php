@@ -18,7 +18,7 @@
     <a class="portafolio move" id="por{{ $po->id }}" href="{{ url('portafolio/' . $po->url) }}">
         <div class="poImg">
         
-            <div class="poImg" style="background-image: url({{ url('images/aplication/curriculum/principal_' . $po->image)}})"></div>         
+            <div class="poImg hover" style="background-image: url({{ url('images/aplication/curriculum/principal_' . $po->image)}})"></div>         
         
             <div  class="poData">
                 

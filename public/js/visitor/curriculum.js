@@ -67,16 +67,22 @@ $(window).load(function() {
     moveAlbum();
 });
 
+$(window).resize(function() {
+    moveAlbum();
+});
+
 function moveAlbum() {
 
+    var windowWidth = $(window).width();
 
-    $("#albumContent").animate({
-        top: '75vh'
-
-    }, 1500, function() {
-
-        // getImages(0);
-    });
-
+    if (windowWidth > 1000) {
+        $("#albumContent").animate({
+            top: '75vh'
+        }, 1000);
+    } else {
+        $("#albumContent").animate({
+            top: 0
+        }, 1000);
+    }
 
 }
