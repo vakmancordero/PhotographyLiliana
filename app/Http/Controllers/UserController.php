@@ -93,22 +93,13 @@ class UserController extends Controller
         else {
 
             foreach($galerias as $gal) {
-                $fotos = AlbumImagesClient::where('album_clients_id', $gal->id)->get();
-
-                foreach($fotos as $img){
-                    Storage::disk('client')->delete('app/'.$img->path);
-                    Storage::disk('client')->delete('computer/'.$img->path);
-                    Storage::disk('client')->delete('mov/'.$img->path);
-                    $img->delete();
-                }
-
-                Storage::disk('client')->delete('principal_'.$gal->img);
-                Storage::disk('client')->delete('secundaria_'.$gal->img);
-                $fotos->delete();
-
+                AlbumImagesClient::where('album_clients_id', $gal->id)->delete();
+                File::deleteDirectory(directories::getClientPath() . $gal->id);
+                $gal->delete();
             }
-        }
 
+        }
+            
         $usuario->delete();
 
         return back()->with('msj', 'Usuario Eliminado');
