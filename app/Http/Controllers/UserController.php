@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\AlbumClient;
 use App\AlbumImagesClient;
+use Illuminate\Support\Facades\Storage;
+use File;
 
 class UserController extends Controller
 {
